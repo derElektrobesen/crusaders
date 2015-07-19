@@ -3,50 +3,6 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent"/>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-        <div class="header" id="home">
-            <!--js-->   
-            <script src="js/bootstrap.min.js"></script>
-            <!--js-->
-            <div class="banner">
-                <div class="container">
-                    <nav class="navbar navbar-default bg">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                          <div class="logo">
-                              <a href="Default.aspx">North Wales<span> Crusaders</span></a>
-                        </div>
-                        <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed mod" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar wt"></span>
-                            <span class="icon-bar wt"></span>
-                            <span class="icon-bar wt"></span>
-                          </button>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse bod" id="bs-example-navbar-collapse-1"> 
-                          <ul class="nav navbar-nav navbar-right navigate">
-                            <li><a href="#about" class="scroll">ABOUT</a></li>
-                            <li><a href="#services" class="scroll">SERVICES</a></li>
-                           <li><a href="#contact" class="scroll">CONTACT</a></li>
-                          </ul>
-                        </div><!-- /.navbar-collapse -->
-                          <div class="clearfix"></div>
-                    </nav>
-                <!--start-smoth-scrolling-->
-                <script type="text/javascript" src="js/move-top.js"></script>
-                <script type="text/javascript" src="js/easing.js"></script>
-                <script type="text/javascript">
-                    jQuery(document).ready(function ($) {
-                        $(".scroll").click(function (event) {
-                            event.preventDefault();
-                            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
-                        });
-                    });
-                </script>
-                <!--start-smoth-scrolling-->
-            <div class="clear"></div>
-            </div>
-         </div>
             <div class="banner-slider">
                 <script>
                     $(function () {
