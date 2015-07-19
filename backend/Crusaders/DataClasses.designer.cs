@@ -299,25 +299,19 @@ namespace Crusaders
 		
 		private int _Id;
 		
-		private int _PlayerId;
+		private System.Nullable<int> _PlayerId;
 		
 		private string _Name;
 		
-		private System.Nullable<System.DateTime> _BirthDate;
+		private string _Position;
 		
-		private System.Nullable<int> _PeriodStart;
+		private string _SponsorType;
 		
-		private System.Nullable<int> _PeriodEnd;
+		private string _Sponsor;
 		
-		private int _Played;
+		private string _Team;
 		
-		private int _Tries;
-		
-		private int _Goals;
-		
-		private int _DropGoals;
-		
-		private int _Points;
+		private string _Image;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
@@ -325,26 +319,20 @@ namespace Crusaders
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnPlayerIdChanging(int value);
+    partial void OnPlayerIdChanging(System.Nullable<int> value);
     partial void OnPlayerIdChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnBirthDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnBirthDateChanged();
-    partial void OnPeriodStartChanging(System.Nullable<int> value);
-    partial void OnPeriodStartChanged();
-    partial void OnPeriodEndChanging(System.Nullable<int> value);
-    partial void OnPeriodEndChanged();
-    partial void OnPlayedChanging(int value);
-    partial void OnPlayedChanged();
-    partial void OnTriesChanging(int value);
-    partial void OnTriesChanged();
-    partial void OnGoalsChanging(int value);
-    partial void OnGoalsChanged();
-    partial void OnDropGoalsChanging(int value);
-    partial void OnDropGoalsChanged();
-    partial void OnPointsChanging(int value);
-    partial void OnPointsChanged();
+    partial void OnPositionChanging(string value);
+    partial void OnPositionChanged();
+    partial void OnSponsorTypeChanging(string value);
+    partial void OnSponsorTypeChanged();
+    partial void OnSponsorChanging(string value);
+    partial void OnSponsorChanged();
+    partial void OnTeamChanging(string value);
+    partial void OnTeamChanged();
+    partial void OnImageChanging(string value);
+    partial void OnImageChanged();
     #endregion
 		
 		public players()
@@ -372,8 +360,8 @@ namespace Crusaders
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL")]
-		public int PlayerId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int")]
+		public System.Nullable<int> PlayerId
 		{
 			get
 			{
@@ -412,162 +400,102 @@ namespace Crusaders
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BirthDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BirthDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="VarChar(50)")]
+		public string Position
 		{
 			get
 			{
-				return this._BirthDate;
+				return this._Position;
 			}
 			set
 			{
-				if ((this._BirthDate != value))
+				if ((this._Position != value))
 				{
-					this.OnBirthDateChanging(value);
+					this.OnPositionChanging(value);
 					this.SendPropertyChanging();
-					this._BirthDate = value;
-					this.SendPropertyChanged("BirthDate");
-					this.OnBirthDateChanged();
+					this._Position = value;
+					this.SendPropertyChanged("Position");
+					this.OnPositionChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeriodStart", DbType="Int")]
-		public System.Nullable<int> PeriodStart
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SponsorType", DbType="VarChar(10)")]
+		public string SponsorType
 		{
 			get
 			{
-				return this._PeriodStart;
+				return this._SponsorType;
 			}
 			set
 			{
-				if ((this._PeriodStart != value))
+				if ((this._SponsorType != value))
 				{
-					this.OnPeriodStartChanging(value);
+					this.OnSponsorTypeChanging(value);
 					this.SendPropertyChanging();
-					this._PeriodStart = value;
-					this.SendPropertyChanged("PeriodStart");
-					this.OnPeriodStartChanged();
+					this._SponsorType = value;
+					this.SendPropertyChanged("SponsorType");
+					this.OnSponsorTypeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PeriodEnd", DbType="Int")]
-		public System.Nullable<int> PeriodEnd
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sponsor", DbType="NVarChar(512)")]
+		public string Sponsor
 		{
 			get
 			{
-				return this._PeriodEnd;
+				return this._Sponsor;
 			}
 			set
 			{
-				if ((this._PeriodEnd != value))
+				if ((this._Sponsor != value))
 				{
-					this.OnPeriodEndChanging(value);
+					this.OnSponsorChanging(value);
 					this.SendPropertyChanging();
-					this._PeriodEnd = value;
-					this.SendPropertyChanged("PeriodEnd");
-					this.OnPeriodEndChanged();
+					this._Sponsor = value;
+					this.SendPropertyChanged("Sponsor");
+					this.OnSponsorChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Played", DbType="Int NOT NULL")]
-		public int Played
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Team", DbType="VarChar(32)")]
+		public string Team
 		{
 			get
 			{
-				return this._Played;
+				return this._Team;
 			}
 			set
 			{
-				if ((this._Played != value))
+				if ((this._Team != value))
 				{
-					this.OnPlayedChanging(value);
+					this.OnTeamChanging(value);
 					this.SendPropertyChanging();
-					this._Played = value;
-					this.SendPropertyChanged("Played");
-					this.OnPlayedChanged();
+					this._Team = value;
+					this.SendPropertyChanged("Team");
+					this.OnTeamChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tries", DbType="Int NOT NULL")]
-		public int Tries
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(512)")]
+		public string Image
 		{
 			get
 			{
-				return this._Tries;
+				return this._Image;
 			}
 			set
 			{
-				if ((this._Tries != value))
+				if ((this._Image != value))
 				{
-					this.OnTriesChanging(value);
+					this.OnImageChanging(value);
 					this.SendPropertyChanging();
-					this._Tries = value;
-					this.SendPropertyChanged("Tries");
-					this.OnTriesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Goals", DbType="Int NOT NULL")]
-		public int Goals
-		{
-			get
-			{
-				return this._Goals;
-			}
-			set
-			{
-				if ((this._Goals != value))
-				{
-					this.OnGoalsChanging(value);
-					this.SendPropertyChanging();
-					this._Goals = value;
-					this.SendPropertyChanged("Goals");
-					this.OnGoalsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DropGoals", DbType="Int NOT NULL")]
-		public int DropGoals
-		{
-			get
-			{
-				return this._DropGoals;
-			}
-			set
-			{
-				if ((this._DropGoals != value))
-				{
-					this.OnDropGoalsChanging(value);
-					this.SendPropertyChanging();
-					this._DropGoals = value;
-					this.SendPropertyChanged("DropGoals");
-					this.OnDropGoalsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Points", DbType="Int NOT NULL")]
-		public int Points
-		{
-			get
-			{
-				return this._Points;
-			}
-			set
-			{
-				if ((this._Points != value))
-				{
-					this.OnPointsChanging(value);
-					this.SendPropertyChanging();
-					this._Points = value;
-					this.SendPropertyChanged("Points");
-					this.OnPointsChanged();
+					this._Image = value;
+					this.SendPropertyChanged("Image");
+					this.OnImageChanged();
 				}
 			}
 		}

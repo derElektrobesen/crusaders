@@ -14,16 +14,13 @@
   <Table Name="dbo.players" Member="players">
     <Type Name="players">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PlayerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="PeriodStart" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PeriodEnd" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Played" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Tries" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Goals" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DropGoals" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SponsorType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Sponsor" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="Team" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(512)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
