@@ -14,7 +14,7 @@ namespace Crusaders
 	[ScriptService]
 	public class Players : System.Web.Services.WebService
 	{
-		[WebMethod(Description = "List of players in command")]
+		[WebMethod(Description = "Request players in command")]
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 		public string GetAllPlayers()
 		{
@@ -23,12 +23,21 @@ namespace Crusaders
 			return new ListResponse<players>(q.ToList()).json();
 		}
 
+		[WebMethod(Description = "Request players in specified team")]
+		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+		public string GetAllPlayersFromTeam(string team)
+		{
+			DataClassesDataContext db = new DataClassesDataContext();
+			IQueryable<players> q = from player in db.players where player.Team == team orderby player.Name select player;
+			return new ListResponse<players>(q.ToList()).json();
+		}
+
 		[WebMethod(Description = "Request information about single player")]
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 		public string Player(int id)
 		{
 			DataClassesDataContext db = new DataClassesDataContext();
-			IQueryable<players> q = from player in db.players where player.Id == id select player;
+			IQueryable<players> q = from player in db.players where player.Id == id orderby player.Name select player;
 			return new ListResponse<players>(q.ToList()).json();
 		}
 	}
