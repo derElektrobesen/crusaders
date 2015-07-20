@@ -10,7 +10,7 @@
                 fit: true
             }
             //Variables
-            var options = $.extend(defaults, options);            
+            var options = $.extend(defaults, options);
             var opt = options, jtype = opt.type, jfit = opt.fit, jwidth = opt.width, vtabs = 'vertical', accord = 'accordion', onload = opt.onload;
 
             //Main function
@@ -102,7 +102,7 @@
                         if (onload)
                             onload($respTabs, $controls);
                     });
-                    //Window resize function                   
+                    //Window resize function
                     $(window).resize(function () {
                         $respTabs.find('.resp-accordion-closed').removeAttr('style');
                     });

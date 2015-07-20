@@ -247,8 +247,8 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                         type: 'default',    // Types: default, vertical, accordion
                                         width: 'auto',      // Auto or any width like 600px
                                         fit: true,          // 100% fit in a container
-                                        onload: function ($menuobj, $control) {
-                                            var name = $menuobj.attr('name');
+                                        onload: function ($container, $control) {
+                                            var name = $control.attr('name');
                                             if (!shown[name]) {
                                                 shown[name] = 1;
                                                 apiCall({
@@ -258,7 +258,7 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                                     success: function (data) {
                                                         console.log(data);
                                                         // INSERT PLAYERS HERE
-                                                        // object can be found using $control object.
+                                                        // object can be found using $container object.
                                                         // Fill this container here
                                                     },
                                                 });
