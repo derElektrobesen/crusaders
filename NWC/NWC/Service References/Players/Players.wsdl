@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllPlayers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPlayersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPlayersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPlayers_internal">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPlayers_internalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPlayers_internalResult" type="tns:ArrayOfPlayers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlayers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="players" nillable="true" type="tns:players" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="players">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SponsorType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sponsor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Team" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateAllPlayers_internal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="players" type="tns:ArrayOfPlayers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAllPlayers_internalResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPlayersFromTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="team" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPlayersFromTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPlayersFromTeamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Player">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlayerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlayerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllPlayersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPlayers" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlayersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlayers_internalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPlayers_internal" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlayers_internalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPlayers_internalResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAllPlayers_internalSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAllPlayers_internal" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAllPlayers_internalSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAllPlayers_internalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlayersFromTeamSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPlayersFromTeam" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPlayersFromTeamSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPlayersFromTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlayerSoapIn">
+    <wsdl:part name="parameters" element="tns:Player" />
+  </wsdl:message>
+  <wsdl:message name="PlayerSoapOut">
+    <wsdl:part name="parameters" element="tns:PlayerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PlayersSoap">
+    <wsdl:operation name="GetAllPlayers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request players in command</wsdl:documentation>
+      <wsdl:input message="tns:GetAllPlayersSoapIn" />
+      <wsdl:output message="tns:GetAllPlayersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlayers_internal">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request players in command (internal api)</wsdl:documentation>
+      <wsdl:input message="tns:GetAllPlayers_internalSoapIn" />
+      <wsdl:output message="tns:GetAllPlayers_internalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAllPlayers_internal">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update players in db (internal api)</wsdl:documentation>
+      <wsdl:input message="tns:UpdateAllPlayers_internalSoapIn" />
+      <wsdl:output message="tns:UpdateAllPlayers_internalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlayersFromTeam">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request players in specified team</wsdl:documentation>
+      <wsdl:input message="tns:GetAllPlayersFromTeamSoapIn" />
+      <wsdl:output message="tns:GetAllPlayersFromTeamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Player">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request information about single player</wsdl:documentation>
+      <wsdl:input message="tns:PlayerSoapIn" />
+      <wsdl:output message="tns:PlayerSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlayersSoap" type="tns:PlayersSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllPlayers">
+      <soap:operation soapAction="http://tempuri.org/GetAllPlayers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlayers_internal">
+      <soap:operation soapAction="http://tempuri.org/GetAllPlayers_internal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAllPlayers_internal">
+      <soap:operation soapAction="http://tempuri.org/UpdateAllPlayers_internal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlayersFromTeam">
+      <soap:operation soapAction="http://tempuri.org/GetAllPlayersFromTeam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Player">
+      <soap:operation soapAction="http://tempuri.org/Player" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlayersSoap12" type="tns:PlayersSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllPlayers">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPlayers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlayers_internal">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPlayers_internal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAllPlayers_internal">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAllPlayers_internal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPlayersFromTeam">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPlayersFromTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Player">
+      <soap12:operation soapAction="http://tempuri.org/Player" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Players">
+    <wsdl:port name="PlayersSoap" binding="tns:PlayersSoap">
+      <soap:address location="http://localhost:49170/Players.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlayersSoap12" binding="tns:PlayersSoap12">
+      <soap12:address location="http://localhost:49170/Players.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

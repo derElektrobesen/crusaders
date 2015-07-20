@@ -30,12 +30,18 @@ namespace Crusaders
 		
     #region Определения метода расширяемости
     partial void OnCreated();
-    partial void Insertstadium(stadium instance);
-    partial void Updatestadium(stadium instance);
-    partial void Deletestadium(stadium instance);
     partial void Insertplayers(players instance);
     partial void Updateplayers(players instance);
     partial void Deleteplayers(players instance);
+    partial void Insertmatches(matches instance);
+    partial void Updatematches(matches instance);
+    partial void Deletematches(matches instance);
+    partial void Inserttickets(tickets instance);
+    partial void Updatetickets(tickets instance);
+    partial void Deletetickets(tickets instance);
+    partial void Insertusers(users instance);
+    partial void Updateusers(users instance);
+    partial void Deleteusers(users instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -68,14 +74,6 @@ namespace Crusaders
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<stadium> stadium
-		{
-			get
-			{
-				return this.GetTable<stadium>();
-			}
-		}
-		
 		public System.Data.Linq.Table<players> players
 		{
 			get
@@ -83,210 +81,28 @@ namespace Crusaders
 				return this.GetTable<players>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.stadium")]
-	public partial class stadium : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Stand;
-		
-		private string _Sector;
-		
-		private int _Row;
-		
-		private int _Seat;
-		
-		private string _State;
-		
-		private System.Nullable<decimal> _Cost;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnStandChanging(string value);
-    partial void OnStandChanged();
-    partial void OnSectorChanging(string value);
-    partial void OnSectorChanged();
-    partial void OnRowChanging(int value);
-    partial void OnRowChanged();
-    partial void OnSeatChanging(int value);
-    partial void OnSeatChanged();
-    partial void OnStateChanging(string value);
-    partial void OnStateChanged();
-    partial void OnCostChanging(System.Nullable<decimal> value);
-    partial void OnCostChanged();
-    #endregion
-		
-		public stadium()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		public System.Data.Linq.Table<matches> matches
 		{
 			get
 			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
+				return this.GetTable<matches>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stand", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
-		public string Stand
+		public System.Data.Linq.Table<tickets> tickets
 		{
 			get
 			{
-				return this._Stand;
-			}
-			set
-			{
-				if ((this._Stand != value))
-				{
-					this.OnStandChanging(value);
-					this.SendPropertyChanging();
-					this._Stand = value;
-					this.SendPropertyChanged("Stand");
-					this.OnStandChanged();
-				}
+				return this.GetTable<tickets>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sector", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
-		public string Sector
+		public System.Data.Linq.Table<users> users
 		{
 			get
 			{
-				return this._Sector;
-			}
-			set
-			{
-				if ((this._Sector != value))
-				{
-					this.OnSectorChanging(value);
-					this.SendPropertyChanging();
-					this._Sector = value;
-					this.SendPropertyChanged("Sector");
-					this.OnSectorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Row", DbType="Int NOT NULL")]
-		public int Row
-		{
-			get
-			{
-				return this._Row;
-			}
-			set
-			{
-				if ((this._Row != value))
-				{
-					this.OnRowChanging(value);
-					this.SendPropertyChanging();
-					this._Row = value;
-					this.SendPropertyChanged("Row");
-					this.OnRowChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seat", DbType="Int NOT NULL")]
-		public int Seat
-		{
-			get
-			{
-				return this._Seat;
-			}
-			set
-			{
-				if ((this._Seat != value))
-				{
-					this.OnSeatChanging(value);
-					this.SendPropertyChanging();
-					this._Seat = value;
-					this.SendPropertyChanged("Seat");
-					this.OnSeatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this.OnStateChanging(value);
-					this.SendPropertyChanging();
-					this._State = value;
-					this.SendPropertyChanged("State");
-					this.OnStateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cost", DbType="Money")]
-		public System.Nullable<decimal> Cost
-		{
-			get
-			{
-				return this._Cost;
-			}
-			set
-			{
-				if ((this._Cost != value))
-				{
-					this.OnCostChanging(value);
-					this.SendPropertyChanging();
-					this._Cost = value;
-					this.SendPropertyChanged("Cost");
-					this.OnCostChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<users>();
 			}
 		}
 	}
@@ -496,6 +312,456 @@ namespace Crusaders
 					this._Image = value;
 					this.SendPropertyChanged("Image");
 					this.OnImageChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.matches")]
+	public partial class matches : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Competitor;
+		
+		private System.Nullable<System.DateTime> _DateTime;
+		
+		private System.Nullable<double> _ChildPrice;
+		
+		private System.Nullable<double> _AdultPrice;
+		
+		private System.Nullable<double> _ConsessionPrice;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCompetitorChanging(string value);
+    partial void OnCompetitorChanged();
+    partial void OnDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateTimeChanged();
+    partial void OnChildPriceChanging(System.Nullable<double> value);
+    partial void OnChildPriceChanged();
+    partial void OnAdultPriceChanging(System.Nullable<double> value);
+    partial void OnAdultPriceChanged();
+    partial void OnConsessionPriceChanging(System.Nullable<double> value);
+    partial void OnConsessionPriceChanged();
+    #endregion
+		
+		public matches()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competitor", DbType="NVarChar(512) NOT NULL", CanBeNull=false)]
+		public string Competitor
+		{
+			get
+			{
+				return this._Competitor;
+			}
+			set
+			{
+				if ((this._Competitor != value))
+				{
+					this.OnCompetitorChanging(value);
+					this.SendPropertyChanging();
+					this._Competitor = value;
+					this.SendPropertyChanged("Competitor");
+					this.OnCompetitorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTime
+		{
+			get
+			{
+				return this._DateTime;
+			}
+			set
+			{
+				if ((this._DateTime != value))
+				{
+					this.OnDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._DateTime = value;
+					this.SendPropertyChanged("DateTime");
+					this.OnDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChildPrice", DbType="Float")]
+		public System.Nullable<double> ChildPrice
+		{
+			get
+			{
+				return this._ChildPrice;
+			}
+			set
+			{
+				if ((this._ChildPrice != value))
+				{
+					this.OnChildPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ChildPrice = value;
+					this.SendPropertyChanged("ChildPrice");
+					this.OnChildPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdultPrice", DbType="Float")]
+		public System.Nullable<double> AdultPrice
+		{
+			get
+			{
+				return this._AdultPrice;
+			}
+			set
+			{
+				if ((this._AdultPrice != value))
+				{
+					this.OnAdultPriceChanging(value);
+					this.SendPropertyChanging();
+					this._AdultPrice = value;
+					this.SendPropertyChanged("AdultPrice");
+					this.OnAdultPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConsessionPrice", DbType="Float")]
+		public System.Nullable<double> ConsessionPrice
+		{
+			get
+			{
+				return this._ConsessionPrice;
+			}
+			set
+			{
+				if ((this._ConsessionPrice != value))
+				{
+					this.OnConsessionPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ConsessionPrice = value;
+					this.SendPropertyChanged("ConsessionPrice");
+					this.OnConsessionPriceChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tickets")]
+	public partial class tickets : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _BookingReference;
+		
+		private System.DateTime _BookingDate;
+		
+		private string _TicketType;
+		
+		private int _Quantity;
+		
+		private int _MatchId;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBookingReferenceChanging(string value);
+    partial void OnBookingReferenceChanged();
+    partial void OnBookingDateChanging(System.DateTime value);
+    partial void OnBookingDateChanged();
+    partial void OnTicketTypeChanging(string value);
+    partial void OnTicketTypeChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnMatchIdChanging(int value);
+    partial void OnMatchIdChanged();
+    #endregion
+		
+		public tickets()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingReference", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string BookingReference
+		{
+			get
+			{
+				return this._BookingReference;
+			}
+			set
+			{
+				if ((this._BookingReference != value))
+				{
+					this.OnBookingReferenceChanging(value);
+					this.SendPropertyChanging();
+					this._BookingReference = value;
+					this.SendPropertyChanged("BookingReference");
+					this.OnBookingReferenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="Date NOT NULL")]
+		public System.DateTime BookingDate
+		{
+			get
+			{
+				return this._BookingDate;
+			}
+			set
+			{
+				if ((this._BookingDate != value))
+				{
+					this.OnBookingDateChanging(value);
+					this.SendPropertyChanging();
+					this._BookingDate = value;
+					this.SendPropertyChanged("BookingDate");
+					this.OnBookingDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TicketType", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string TicketType
+		{
+			get
+			{
+				return this._TicketType;
+			}
+			set
+			{
+				if ((this._TicketType != value))
+				{
+					this.OnTicketTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TicketType = value;
+					this.SendPropertyChanged("TicketType");
+					this.OnTicketTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchId", DbType="Int NOT NULL")]
+		public int MatchId
+		{
+			get
+			{
+				return this._MatchId;
+			}
+			set
+			{
+				if ((this._MatchId != value))
+				{
+					this.OnMatchIdChanging(value);
+					this.SendPropertyChanging();
+					this._MatchId = value;
+					this.SendPropertyChanged("MatchId");
+					this.OnMatchIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
+	public partial class users : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _name;
+		
+		private string _pass;
+		
+		private string _role;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnpassChanging(string value);
+    partial void OnpassChanged();
+    partial void OnroleChanging(string value);
+    partial void OnroleChanged();
+    #endregion
+		
+		public users()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(64) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="NVarChar(64) NOT NULL", CanBeNull=false)]
+		public string pass
+		{
+			get
+			{
+				return this._pass;
+			}
+			set
+			{
+				if ((this._pass != value))
+				{
+					this.OnpassChanging(value);
+					this.SendPropertyChanging();
+					this._pass = value;
+					this.SendPropertyChanged("pass");
+					this.OnpassChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string role
+		{
+			get
+			{
+				return this._role;
+			}
+			set
+			{
+				if ((this._role != value))
+				{
+					this.OnroleChanging(value);
+					this.SendPropertyChanging();
+					this._role = value;
+					this.SendPropertyChanged("role");
+					this.OnroleChanged();
 				}
 			}
 		}

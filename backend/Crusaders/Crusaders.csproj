@@ -59,7 +59,9 @@
     <Content Include="App_Data\Crusaders_log.ldf">
       <DependentUpon>Crusaders.mdf</DependentUpon>
     </Content>
+    <Content Include="Matches.asmx" />
     <Content Include="Players.asmx" />
+    <Content Include="Users.asmx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,11 +77,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Matches.asmx.cs">
+      <DependentUpon>Matches.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Players.asmx.cs">
       <DependentUpon>Players.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users.asmx.cs">
+      <DependentUpon>Users.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DataClasses.dbml">

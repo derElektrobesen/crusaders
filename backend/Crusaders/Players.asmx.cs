@@ -18,9 +18,24 @@ namespace Crusaders
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 		public string GetAllPlayers()
 		{
+			return new ListResponse<players>(GetAllPlayers_internal()).json();
+		}
+
+		[WebMethod(Description = "Request players in command (internal api)")]
+		public List<players> GetAllPlayers_internal()
+		{
 			DataClassesDataContext db = new DataClassesDataContext();
-			IQueryable<players> q = from player in db.players select player;
-			return new ListResponse<players>(q.ToList()).json();
+			IQueryable<players> q = from player in db.players orderby player.Team, player.Name select player;
+			return q.ToList();
+		}
+
+		[WebMethod(Description = "Update players in db (internal api)")]
+		public void UpdateAllPlayers_internal(List<players> players)
+		{
+			DataClassesDataContext db = new DataClassesDataContext();
+			db.players.DeleteAllOnSubmit(db.players);
+			db.players.InsertAllOnSubmit(players);
+			db.SubmitChanges();
 		}
 
 		[WebMethod(Description = "Request players in specified team")]
