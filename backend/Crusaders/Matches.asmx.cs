@@ -43,6 +43,13 @@ namespace Crusaders
 			return q.ToList();
 		}
 
+		[WebMethod(Description = "Request list of matches")]
+		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+		public string ListMatches()
+		{
+			return new ListResponse<matches>(GetAllMatches()).json();
+		}
+
 		[WebMethod(Description = "Update list of matches")]
 		public void UpdateMatches(List<matches> list)
 		{

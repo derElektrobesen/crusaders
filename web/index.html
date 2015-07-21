@@ -26,44 +26,7 @@ Berezhnoy Pavel S14004732
         <script src="js/jquery.min.js"></script>
         <script src="js/responsiveslides.min.js"></script>
 
-        <script type="text/javascript">
-            function apiCall(args) {
-                // args:    object with following fields (all fields are not required)
-                //  api:     name of API, for example, 'Players', Undefined by default
-                //  method:  func name into API, for example, 'GetAllPlayers', no function be default
-                //  data:    object to send to the server
-                //  success: success callback (takes 1 arg)
-                //  failure: failure callback (may takes 1 arg)
-
-                if (!args)
-                    args = {};
-                if (!args.api)
-                    args.api = "Unknown";
-                if (!args.method)
-                    args.method = "";
-                if (!args.data)
-                    args.data = {};
-                $.ajax({
-                    method: 'POST',
-                    url: '/api/' + args.api + '.asmx/' + args.method,
-                    dataType: 'json',
-                    data: JSON.stringify(args.data),
-                    contentType: 'application/json; charset=utf-8',
-                    success: function (data) {
-                        if (!data || !data.d) {
-                            if (args.failure)
-                                args.failure();
-                        } else if (args.success) {
-                            args.success(JSON.parse(data.d));
-                        }
-                    },
-                    error: function (msg) {
-                        if (args.failure)
-                            args.failure(msg);
-                    },
-                });
-            }
-        </script>
+        <script src="js/functions.js"></script>
     </head>
     <body>
         <div class="header" id="home">
@@ -132,7 +95,7 @@ Berezhnoy Pavel S14004732
                           <div class="caption chn">
                             <h3>Tickets</h3>
                             <p>To purchase your ticket online please visit our SHOP or you can download a Season Ticket form here and return to the club or you can visit the club office.</p>
-                            <a class="morebtn" href="http://north-wales-crusaders.myshopify.com/">SHOP</a>
+                            <a class="morebtn" href="shop.html">SHOP</a>
                           </div>
                         </li>
                         <li>
@@ -140,7 +103,7 @@ Berezhnoy Pavel S14004732
                             <div class="caption chn">
                              <h3>Tickets</h3>
                             <p>To purchase your ticket online please visit our SHOP or you can download a Season Ticket form here and return to the club or you can visit the club office.</p>
-                            <a class="morebtn" href="http://north-wales-crusaders.myshopify.com/">SHOP</a>
+                            <a class="morebtn" href="shop.html">SHOP</a>
                           </p>
                             </div>
                         </li>
@@ -149,7 +112,7 @@ Berezhnoy Pavel S14004732
                             <div class="caption chn">
                             <h3>Tickets</h3>
                              <p>To purchase your ticket online please visit our SHOP or you can download a Season Ticket form here and return to the club or you can visit the club office. </p>
-                            <a class="morebtn" href="http://north-wales-crusaders.myshopify.com/">SHOP</a>
+                            <a class="morebtn" href="shop.html">SHOP</a>
                             </div>
                         </li>
                       </ul>
@@ -199,7 +162,7 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
             <div class="container">
                 <h2>2015 Squad Numbers</h2>
                 <p>* Announced on 7 January 2015</p>
-                <a href="2015squad.html">VIEW MORE</a>
+                <a href="#">VIEW MORE</a>
             </div>
         </div>
         <div class="deer-services" id="services">
@@ -266,21 +229,14 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                         },
                                     });
                                 });
-                            </script>	
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-           
-                <script src="js/jquery.wmuSlider.js"></script> 
-                  <script>
-                    $('.example1').wmuSlider();         
-                 </script> 	           	      
-            </div>
-          
-                
-            </div>
-        </div>
+    </div>
+</div>
 
             <div class="foot-ban"> 
                 <h3><q>Our team</q></h3>
