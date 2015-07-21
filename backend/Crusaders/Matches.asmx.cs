@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Script.Services;
 using System.Net.Mail;
+using System.IO;
 
 namespace Crusaders
 {
@@ -51,6 +52,13 @@ namespace Crusaders
 			return new ListResponse<matches>(GetAllMatches()).json();
 		}
 
+		class NoException : Exception
+		{
+			public NoException()
+				: base()
+			{ }
+		}
+
 		[WebMethod(Description = "Make a booking")]
 		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 		public string BookTicket(int matchid, string tickettype, int quantity, string email)
@@ -64,7 +72,7 @@ namespace Crusaders
 			tickets ticket = new tickets();
 			ticket.BookingDate = DateTime.Now;
 			ticket.BookingReference = (
-					(match.Competitor + "XXXX").Replace(" ", string.Empty).Substring(0, 4)
+					(match.Competitor.Replace(" ", string.Empty) + "XXXX").Substring(0, 4)
 					+ rnd.Next(0, 99999).ToString("D5")
 					+ ticket.BookingDate.ToString("ddMMyy")
 				).ToUpper();
@@ -75,27 +83,59 @@ namespace Crusaders
 
 			if (email != null && email.Length > 0)
 			{
+
 				try
 				{
-					System.Threading.ThreadPool.QueueUserWorkItem(
-						delegate
+					string my_email, my_pass;
+					try
+					{
+						using (StreamReader file = new StreamReader(@"C:/crusaders.conf"))
+						{
+							string line = file.ReadLine();
+							if (line == null)
+								throw new NoException();
+
+							string[] words = line.Split(' ');
+							if (words.Length != 2)
+								throw new NoException();
+
+							my_email = words[0];
+							my_pass = words[1];
+						}
+					}
+					catch (FileNotFoundException e)
+					{
+						return new CommonResponse(new InternalError(e.ToString())).json();
+					}
+
+					SmtpClient client = new SmtpClient();
+					client.UseDefaultCredentials = false;
+					client.Credentials = new System.Net.NetworkCredential(my_email, my_pass);
+					client.Port = 587;
+					client.Host = "smtp.office365.com";
+					client.DeliveryMethod = SmtpDeliveryMethod.Network;
+					client.EnableSsl = true;
+
+					MailMessage mail = new MailMessage();
+					mail.To.Add(new MailAddress(email));
+					mail.From = new MailAddress(my_email, "Crusaders booking system");
+					mail.Subject = "Crusaders match booking reference";
+					mail.Body = "Match date: " + match.DateTime.ToString() + ";\nBooking reference: " + ticket.BookingReference;
+
+					System.Threading.ThreadPool.QueueUserWorkItem(delegate
 						{
 							try
 							{
-								MailMessage mail = new MailMessage("booking@crusaders.co.uk", email);
-								SmtpClient client = new SmtpClient();
-								client.Port = 25;
-								client.DeliveryMethod = SmtpDeliveryMethod.Network;
-								client.UseDefaultCredentials = false;
-								client.Host = "smtp-relay.gmail.com";
-								mail.Subject = "Crusaders match booking reference";
-								mail.Body = "Match date: " + match.DateTime.ToString() + ";\nBooking reference: " + ticket.BookingReference;
 								client.Send(mail);
 							}
-							catch (Exception e)
+							catch (Exception)
 							{
+								// TODO: process exception
 							}
 						}, null);
+				}
+				catch (NoException)
+				{
 				}
 				catch (Exception e)
 				{
