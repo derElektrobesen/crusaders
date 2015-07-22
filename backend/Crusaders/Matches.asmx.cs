@@ -41,7 +41,7 @@ namespace Crusaders
 		public List<matches> GetAllMatches()
 		{
 			DataClassesDataContext db = new DataClassesDataContext();
-			IQueryable<matches> q = from match in db.matches orderby match.DateTime select match;
+			IQueryable<matches> q = from match in db.matches where match.DateTime > DateTime.Now orderby match.DateTime select match;
 			return q.ToList();
 		}
 

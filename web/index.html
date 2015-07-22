@@ -199,20 +199,20 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                        <h4>First Team</h4>
                                        <P>First team squad for North Wales Crusaders Rugby League team who play in Wrexham.</P>
                                        <a onclick="loadCommand($('#resp-commands-cmd1-container'), $('#resp-commands-cmd1-menu'));">Show</a>
-                                       <div class="entry"></div>
+                                       <div class="entry" align="center"></div>
                                    </div>
                                    <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1" id="resp-commands-cmd2-container">
                                        <img src="images/b.png" alt="" class="img-responsive"/>
                                        <h4>Under 16’s Squad</h4>
                                        <a onclick="loadCommand($('#resp-commands-cmd2-container'), $('#resp-commands-cmd2-menu'));">Show</a>
-                                       <div class="entry"></div>
+                                       <div class="entry" align="center"></div>
                                    </div>
                                    <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-2" id="resp-commands-cmd3-container">
                                        <img src="images/c.jpg" alt="" class="img-responsive"/>
                                        <h4>Wheelchair Squad</h4>
                                        <p>NWC Wheelchair Squad 2015</p>
                                        <a onclick="loadCommand($('#resp-commands-cmd3-container'), $('#resp-commands-cmd3-menu'));">Show</a>
-                                       <div class="entry"></div>
+                                       <div class="entry" align="center"></div>
                                    </div>
                                </div>
                            </div>
@@ -221,17 +221,6 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                 var loadCommand;
 
                                 $(document).ready(function () {
-                                    if (!String.prototype.format) {
-                                        String.prototype.format = function() {
-                                            var args = arguments;
-                                            return this.replace(/{(\d+)}/g, function(match, number) {
-                                                    return typeof args[number] != 'undefined'
-                                                        ? args[number]
-                                                        : match;
-                                                    });
-                                        };
-                                    }
-
                                     $('#horizontalTab').easyResponsiveTabs({
                                         type: 'default',    // Types: default, vertical, accordion
                                         width: 'auto',      // Auto or any width like 600px
@@ -248,7 +237,7 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                             + "{5}</div>", // sponsored by || Sponsorship available
                                         element_template =
                                             "<div class='col col_1_3'><div class='inner'><div class='styled_table table_white shadow'>"
-                                            + "<table width='33%'><thead><tr><th style='text-align: center;'>{0}</th></tr></thead>"
+                                            + "<table><thead><tr><th style='text-align: center;'>{0}</th></tr></thead>"
                                             + "<tbody><tr><td><a id='{1}'></a></td></tr></tbody></table></div></div></div>";
 
                                     loadCommand = function ($container, $control) {

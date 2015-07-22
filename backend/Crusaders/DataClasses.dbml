@@ -12,16 +12,6 @@
       <Column Name="Image" Type="System.String" DbType="VarChar(512)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.matches" Member="matches">
-    <Type Name="matches">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Competitor" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
-      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ChildPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AdultPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ConsessionPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.users" Member="users">
     <Type Name="users">
       <Column Name="name" Type="System.String" DbType="NVarChar(64) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -37,6 +27,17 @@
       <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MatchId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.matches" Member="matches">
+    <Type Name="matches">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Competitor" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChildPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AdultPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ConsessionPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CompetitorImage" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

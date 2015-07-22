@@ -63,11 +63,35 @@ Berezhnoy Pavel S14004732
             <div class="clear"></div>
             </div>
          </div>
+       </div>
 
-        </div>
+        <script type="text/javascript">
+            /*
+            $(function () {
+                apiCall({
+                    api: 'Matches',
+                    method: 'ListMatches',
+                    success: function(data) {
+                        if (data.status != 200)
+                            return;
+                        var template =
+                            '<div class="product span3 adaptive-grid">' +
+                                '<div class="image"><a href="{0}"><img src="{1}" alt="Match Ticket v {2} {3}"></a></div>' +
+                                '<div class="details"><a href="{0}" class="clearfix"><h4 class="title">Match Ticket v {2} {3}</h4>' +
+                                    '<span class="vendor">North Wales Crusaders</span><span class="price"><small><em>From</em></small>£{4}.00</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                    },
+                });
+            });
+            */
+        </script>
+
         <div class="about-deer" id="about">
             <div class="container">
-                <div class="about-para"> 
+                <div class="about-para" id="matches-list">
                     <h1>Matches</h1>
                     <div class="product span3 adaptive-grid">
 
@@ -83,7 +107,7 @@ Berezhnoy Pavel S14004732
     <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds" class="clearfix">
       <h4 class="title">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h4>
       <span class="vendor">North Wales Crusaders</span>
-      <span class="price">           
+      <span class="price">
         <small><em>From</em></small>
                £5.00
       </span>

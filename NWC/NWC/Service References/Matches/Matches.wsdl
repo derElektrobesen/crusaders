@@ -25,8 +25,36 @@
           <s:element minOccurs="1" maxOccurs="1" name="ChildPrice" nillable="true" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="AdultPrice" nillable="true" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="ConsessionPrice" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompetitorImage" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ListMatches">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListMatchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListMatchesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="matchid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="tickettype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookTicketResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="UpdateMatches">
         <s:complexType>
           <s:sequence>
@@ -68,6 +96,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="TicketType" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="MatchId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
         </s:sequence>
       </s:complexType>
     </s:schema>
@@ -77,6 +106,18 @@
   </wsdl:message>
   <wsdl:message name="GetAllMatchesSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListMatchesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListMatches" />
+  </wsdl:message>
+  <wsdl:message name="ListMatchesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:BookTicket" />
+  </wsdl:message>
+  <wsdl:message name="BookTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:BookTicketResponse" />
   </wsdl:message>
   <wsdl:message name="UpdateMatchesSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateMatches" />
@@ -96,6 +137,16 @@
       <wsdl:input message="tns:GetAllMatchesSoapIn" />
       <wsdl:output message="tns:GetAllMatchesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ListMatches">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request list of matches</wsdl:documentation>
+      <wsdl:input message="tns:ListMatchesSoapIn" />
+      <wsdl:output message="tns:ListMatchesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookTicket">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Make a booking</wsdl:documentation>
+      <wsdl:input message="tns:BookTicketSoapIn" />
+      <wsdl:output message="tns:BookTicketSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateMatches">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update list of matches</wsdl:documentation>
       <wsdl:input message="tns:UpdateMatchesSoapIn" />
@@ -111,6 +162,24 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllMatches">
       <soap:operation soapAction="http://tempuri.org/GetAllMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMatches">
+      <soap:operation soapAction="http://tempuri.org/ListMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookTicket">
+      <soap:operation soapAction="http://tempuri.org/BookTicket" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -141,6 +210,24 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllMatches">
       <soap12:operation soapAction="http://tempuri.org/GetAllMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListMatches">
+      <soap12:operation soapAction="http://tempuri.org/ListMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookTicket">
+      <soap12:operation soapAction="http://tempuri.org/BookTicket" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

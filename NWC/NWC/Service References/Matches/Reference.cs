@@ -42,6 +42,9 @@ namespace NWC.Matches {
         
         private System.Nullable<double> ConsessionPriceField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompetitorImageField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -130,6 +133,19 @@ namespace NWC.Matches {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string CompetitorImage {
+            get {
+                return this.CompetitorImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompetitorImageField, value) != true)) {
+                    this.CompetitorImageField = value;
+                    this.RaisePropertyChanged("CompetitorImage");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -184,6 +200,9 @@ namespace NWC.Matches {
         private int QuantityField;
         
         private int MatchIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -260,6 +279,19 @@ namespace NWC.Matches {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -277,6 +309,14 @@ namespace NWC.Matches {
         // CODEGEN: Контракт генерации сообщений с именем GetAllMatchesResult из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllMatches", ReplyAction="*")]
         NWC.Matches.GetAllMatchesResponse GetAllMatches(NWC.Matches.GetAllMatchesRequest request);
+        
+        // CODEGEN: Контракт генерации сообщений с именем ListMatchesResult из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListMatches", ReplyAction="*")]
+        NWC.Matches.ListMatchesResponse ListMatches(NWC.Matches.ListMatchesRequest request);
+        
+        // CODEGEN: Контракт генерации сообщений с именем tickettype из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BookTicket", ReplyAction="*")]
+        NWC.Matches.BookTicketResponse BookTicket(NWC.Matches.BookTicketRequest request);
         
         // CODEGEN: Контракт генерации сообщений с именем list из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateMatches", ReplyAction="*")]
@@ -345,6 +385,147 @@ namespace NWC.Matches {
         
         public GetAllMatchesResponseBody(NWC.Matches.ArrayOfMatches GetAllMatchesResult) {
             this.GetAllMatchesResult = GetAllMatchesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListMatchesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListMatches", Namespace="http://tempuri.org/", Order=0)]
+        public NWC.Matches.ListMatchesRequestBody Body;
+        
+        public ListMatchesRequest() {
+        }
+        
+        public ListMatchesRequest(NWC.Matches.ListMatchesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class ListMatchesRequestBody {
+        
+        public ListMatchesRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class ListMatchesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="ListMatchesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NWC.Matches.ListMatchesResponseBody Body;
+        
+        public ListMatchesResponse() {
+        }
+        
+        public ListMatchesResponse(NWC.Matches.ListMatchesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class ListMatchesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string ListMatchesResult;
+        
+        public ListMatchesResponseBody() {
+        }
+        
+        public ListMatchesResponseBody(string ListMatchesResult) {
+            this.ListMatchesResult = ListMatchesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BookTicketRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BookTicket", Namespace="http://tempuri.org/", Order=0)]
+        public NWC.Matches.BookTicketRequestBody Body;
+        
+        public BookTicketRequest() {
+        }
+        
+        public BookTicketRequest(NWC.Matches.BookTicketRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BookTicketRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int matchid;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string tickettype;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int quantity;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string email;
+        
+        public BookTicketRequestBody() {
+        }
+        
+        public BookTicketRequestBody(int matchid, string tickettype, int quantity, string email) {
+            this.matchid = matchid;
+            this.tickettype = tickettype;
+            this.quantity = quantity;
+            this.email = email;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class BookTicketResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="BookTicketResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NWC.Matches.BookTicketResponseBody Body;
+        
+        public BookTicketResponse() {
+        }
+        
+        public BookTicketResponse(NWC.Matches.BookTicketResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class BookTicketResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string BookTicketResult;
+        
+        public BookTicketResponseBody() {
+        }
+        
+        public BookTicketResponseBody(string BookTicketResult) {
+            this.BookTicketResult = BookTicketResult;
         }
     }
     
@@ -507,6 +688,34 @@ namespace NWC.Matches {
             inValue.Body = new NWC.Matches.GetAllMatchesRequestBody();
             NWC.Matches.GetAllMatchesResponse retVal = ((NWC.Matches.MatchesSoap)(this)).GetAllMatches(inValue);
             return retVal.Body.GetAllMatchesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NWC.Matches.ListMatchesResponse NWC.Matches.MatchesSoap.ListMatches(NWC.Matches.ListMatchesRequest request) {
+            return base.Channel.ListMatches(request);
+        }
+        
+        public string ListMatches() {
+            NWC.Matches.ListMatchesRequest inValue = new NWC.Matches.ListMatchesRequest();
+            inValue.Body = new NWC.Matches.ListMatchesRequestBody();
+            NWC.Matches.ListMatchesResponse retVal = ((NWC.Matches.MatchesSoap)(this)).ListMatches(inValue);
+            return retVal.Body.ListMatchesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NWC.Matches.BookTicketResponse NWC.Matches.MatchesSoap.BookTicket(NWC.Matches.BookTicketRequest request) {
+            return base.Channel.BookTicket(request);
+        }
+        
+        public string BookTicket(int matchid, string tickettype, int quantity, string email) {
+            NWC.Matches.BookTicketRequest inValue = new NWC.Matches.BookTicketRequest();
+            inValue.Body = new NWC.Matches.BookTicketRequestBody();
+            inValue.Body.matchid = matchid;
+            inValue.Body.tickettype = tickettype;
+            inValue.Body.quantity = quantity;
+            inValue.Body.email = email;
+            NWC.Matches.BookTicketResponse retVal = ((NWC.Matches.MatchesSoap)(this)).BookTicket(inValue);
+            return retVal.Body.BookTicketResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

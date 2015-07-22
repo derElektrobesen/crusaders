@@ -33,15 +33,15 @@ namespace Crusaders
     partial void Insertplayers(players instance);
     partial void Updateplayers(players instance);
     partial void Deleteplayers(players instance);
-    partial void Insertmatches(matches instance);
-    partial void Updatematches(matches instance);
-    partial void Deletematches(matches instance);
     partial void Insertusers(users instance);
     partial void Updateusers(users instance);
     partial void Deleteusers(users instance);
     partial void Inserttickets(tickets instance);
     partial void Updatetickets(tickets instance);
     partial void Deletetickets(tickets instance);
+    partial void Insertmatches(matches instance);
+    partial void Updatematches(matches instance);
+    partial void Deletematches(matches instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -82,14 +82,6 @@ namespace Crusaders
 			}
 		}
 		
-		public System.Data.Linq.Table<matches> matches
-		{
-			get
-			{
-				return this.GetTable<matches>();
-			}
-		}
-		
 		public System.Data.Linq.Table<users> users
 		{
 			get
@@ -103,6 +95,14 @@ namespace Crusaders
 			get
 			{
 				return this.GetTable<tickets>();
+			}
+		}
+		
+		public System.Data.Linq.Table<matches> matches
+		{
+			get
+			{
+				return this.GetTable<matches>();
 			}
 		}
 	}
@@ -312,188 +312,6 @@ namespace Crusaders
 					this._Image = value;
 					this.SendPropertyChanged("Image");
 					this.OnImageChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.matches")]
-	public partial class matches : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Competitor;
-		
-		private System.Nullable<System.DateTime> _DateTime;
-		
-		private System.Nullable<double> _ChildPrice;
-		
-		private System.Nullable<double> _AdultPrice;
-		
-		private System.Nullable<double> _ConsessionPrice;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnCompetitorChanging(string value);
-    partial void OnCompetitorChanged();
-    partial void OnDateTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateTimeChanged();
-    partial void OnChildPriceChanging(System.Nullable<double> value);
-    partial void OnChildPriceChanged();
-    partial void OnAdultPriceChanging(System.Nullable<double> value);
-    partial void OnAdultPriceChanged();
-    partial void OnConsessionPriceChanging(System.Nullable<double> value);
-    partial void OnConsessionPriceChanged();
-    #endregion
-		
-		public matches()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competitor", DbType="NVarChar(512) NOT NULL", CanBeNull=false)]
-		public string Competitor
-		{
-			get
-			{
-				return this._Competitor;
-			}
-			set
-			{
-				if ((this._Competitor != value))
-				{
-					this.OnCompetitorChanging(value);
-					this.SendPropertyChanging();
-					this._Competitor = value;
-					this.SendPropertyChanged("Competitor");
-					this.OnCompetitorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateTime
-		{
-			get
-			{
-				return this._DateTime;
-			}
-			set
-			{
-				if ((this._DateTime != value))
-				{
-					this.OnDateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._DateTime = value;
-					this.SendPropertyChanged("DateTime");
-					this.OnDateTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChildPrice", DbType="Float")]
-		public System.Nullable<double> ChildPrice
-		{
-			get
-			{
-				return this._ChildPrice;
-			}
-			set
-			{
-				if ((this._ChildPrice != value))
-				{
-					this.OnChildPriceChanging(value);
-					this.SendPropertyChanging();
-					this._ChildPrice = value;
-					this.SendPropertyChanged("ChildPrice");
-					this.OnChildPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdultPrice", DbType="Float")]
-		public System.Nullable<double> AdultPrice
-		{
-			get
-			{
-				return this._AdultPrice;
-			}
-			set
-			{
-				if ((this._AdultPrice != value))
-				{
-					this.OnAdultPriceChanging(value);
-					this.SendPropertyChanging();
-					this._AdultPrice = value;
-					this.SendPropertyChanged("AdultPrice");
-					this.OnAdultPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConsessionPrice", DbType="Float")]
-		public System.Nullable<double> ConsessionPrice
-		{
-			get
-			{
-				return this._ConsessionPrice;
-			}
-			set
-			{
-				if ((this._ConsessionPrice != value))
-				{
-					this.OnConsessionPriceChanging(value);
-					this.SendPropertyChanging();
-					this._ConsessionPrice = value;
-					this.SendPropertyChanged("ConsessionPrice");
-					this.OnConsessionPriceChanged();
 				}
 			}
 		}
@@ -786,6 +604,212 @@ namespace Crusaders
 					this._Email = value;
 					this.SendPropertyChanged("Email");
 					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.matches")]
+	public partial class matches : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Competitor;
+		
+		private System.Nullable<System.DateTime> _DateTime;
+		
+		private System.Nullable<double> _ChildPrice;
+		
+		private System.Nullable<double> _AdultPrice;
+		
+		private System.Nullable<double> _ConsessionPrice;
+		
+		private string _CompetitorImage;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCompetitorChanging(string value);
+    partial void OnCompetitorChanged();
+    partial void OnDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateTimeChanged();
+    partial void OnChildPriceChanging(System.Nullable<double> value);
+    partial void OnChildPriceChanged();
+    partial void OnAdultPriceChanging(System.Nullable<double> value);
+    partial void OnAdultPriceChanged();
+    partial void OnConsessionPriceChanging(System.Nullable<double> value);
+    partial void OnConsessionPriceChanged();
+    partial void OnCompetitorImageChanging(string value);
+    partial void OnCompetitorImageChanged();
+    #endregion
+		
+		public matches()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Competitor", DbType="NVarChar(512) NOT NULL", CanBeNull=false)]
+		public string Competitor
+		{
+			get
+			{
+				return this._Competitor;
+			}
+			set
+			{
+				if ((this._Competitor != value))
+				{
+					this.OnCompetitorChanging(value);
+					this.SendPropertyChanging();
+					this._Competitor = value;
+					this.SendPropertyChanged("Competitor");
+					this.OnCompetitorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTime
+		{
+			get
+			{
+				return this._DateTime;
+			}
+			set
+			{
+				if ((this._DateTime != value))
+				{
+					this.OnDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._DateTime = value;
+					this.SendPropertyChanged("DateTime");
+					this.OnDateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChildPrice", DbType="Float")]
+		public System.Nullable<double> ChildPrice
+		{
+			get
+			{
+				return this._ChildPrice;
+			}
+			set
+			{
+				if ((this._ChildPrice != value))
+				{
+					this.OnChildPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ChildPrice = value;
+					this.SendPropertyChanged("ChildPrice");
+					this.OnChildPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdultPrice", DbType="Float")]
+		public System.Nullable<double> AdultPrice
+		{
+			get
+			{
+				return this._AdultPrice;
+			}
+			set
+			{
+				if ((this._AdultPrice != value))
+				{
+					this.OnAdultPriceChanging(value);
+					this.SendPropertyChanging();
+					this._AdultPrice = value;
+					this.SendPropertyChanged("AdultPrice");
+					this.OnAdultPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConsessionPrice", DbType="Float")]
+		public System.Nullable<double> ConsessionPrice
+		{
+			get
+			{
+				return this._ConsessionPrice;
+			}
+			set
+			{
+				if ((this._ConsessionPrice != value))
+				{
+					this.OnConsessionPriceChanging(value);
+					this.SendPropertyChanging();
+					this._ConsessionPrice = value;
+					this.SendPropertyChanged("ConsessionPrice");
+					this.OnConsessionPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompetitorImage", DbType="NVarChar(512)")]
+		public string CompetitorImage
+		{
+			get
+			{
+				return this._CompetitorImage;
+			}
+			set
+			{
+				if ((this._CompetitorImage != value))
+				{
+					this.OnCompetitorImageChanging(value);
+					this.SendPropertyChanging();
+					this._CompetitorImage = value;
+					this.SendPropertyChanged("CompetitorImage");
+					this.OnCompetitorImageChanged();
 				}
 			}
 		}

@@ -1927,3 +1927,11 @@ li.grid-1_right p{
         min-height: 113px;
     }
 }
+
+.entry {
+    margin-top: 20px;
+}
+
+.entry>.col {
+    margin-bottom: 15px;
+}
