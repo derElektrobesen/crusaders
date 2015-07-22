@@ -52,6 +52,15 @@ namespace Crusaders
 			return new ListResponse<matches>(GetAllMatches()).json();
 		}
 
+		[WebMethod(Description = "Request specific match info")]
+		[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+		public string MatchInfo(int id)
+		{
+			DataClassesDataContext db = new DataClassesDataContext();
+			IQueryable<matches> q = from match in db.matches where match.Id == id select match;
+			return new ListResponse<matches>(q.ToList()).json();
+		}
+
 		class NoException : Exception
 		{
 			public NoException()
