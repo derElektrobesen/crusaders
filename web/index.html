@@ -185,41 +185,46 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                     <div class="sap_tabs">
                          <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                               <ul class="resp-tabs-list">
-                                   <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab" name="First Team">
+                                   <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab" name="First Team" id="resp-commands-cmd1-menu">
                                    <span>First Team</span></li>
-                                   <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab" name="Under 16’s Squad">
+                                   <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab" name="Under 16’s Squad" id="resp-commands-cmd2-menu">
                                    <span>Under 16’s</span></li>
-                                   <li class="resp-tab-item fs" aria-controls="tab_item-2" role="tab" name="Wheelchair Squad">
+                                   <li class="resp-tab-item fs" aria-controls="tab_item-2" role="tab" name="Wheelchair Squad" id="resp-commands-cmd3-menu">
                                    <span>Wheelchair</span></li>
                                    <div class="clearfix"></div>
                                </ul>
                                <div class="resp-tabs-container">
-                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-0">
+                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-0" id="resp-commands-cmd1-container">
                                        <img src="images/a.jpg" alt="" class="img-responsive"/>
                                        <h4>First Team</h4>
                                        <P>First team squad for North Wales Crusaders Rugby League team who play in Wrexham.</P>
+                                       <a onclick="loadCommand($('#resp-commands-cmd1-container'), $('#resp-commands-cmd1-menu'));">Show</a>
                                        <div class="entry"></div>
                                    </div>
-                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
+                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1" id="resp-commands-cmd2-container">
                                        <img src="images/b.png" alt="" class="img-responsive"/>
                                        <h4>Under 16’s Squad</h4>
-                                       <a href="http://www.northwalescrusaders.co.uk/under-16s-squad/">Show</a>
+                                       <a onclick="loadCommand($('#resp-commands-cmd2-container'), $('#resp-commands-cmd2-menu'));">Show</a>
+                                       <div class="entry"></div>
                                    </div>
-                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-2">
+                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-2" id="resp-commands-cmd3-container">
                                        <img src="images/c.jpg" alt="" class="img-responsive"/>
                                        <h4>Wheelchair Squad</h4>
                                        <p>NWC Wheelchair Squad 2015</p>
-                                       <a href="http://www.northwalescrusaders.co.uk/wheelchair-squad/">Show</a>
+                                       <a onclick="loadCommand($('#resp-commands-cmd3-container'), $('#resp-commands-cmd3-menu'));">Show</a>
+                                       <div class="entry"></div>
                                    </div>
                                </div>
                            </div>
                         <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
                             <script type="text/javascript">
+                                var loadCommand;
+
                                 $(document).ready(function () {
                                     if (!String.prototype.format) {
                                         String.prototype.format = function() {
                                             var args = arguments;
-                                            return this.replace(/{(\d+)}/g, function(match, number) { 
+                                            return this.replace(/{(\d+)}/g, function(match, number) {
                                                     return typeof args[number] != 'undefined'
                                                         ? args[number]
                                                         : match;
@@ -227,8 +232,14 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                         };
                                     }
 
+                                    $('#horizontalTab').easyResponsiveTabs({
+                                        type: 'default',    // Types: default, vertical, accordion
+                                        width: 'auto',      // Auto or any width like 600px
+                                        fit: true,          // 100% fit in a container
+                                    });
+
                                     var shown = {},
-                                        $tippies = $(".tippies-container");
+                                        $tippies = $(".tippies-container"),
                                         tippy_template =
                                             "<div class='tippy' data-width='230' data-height='160' data-img='{0}' data-anchor='#{1}'>"
                                             + "<strong>{2}</strong><br>"
@@ -240,55 +251,56 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                             + "<table width='33%'><thead><tr><th style='text-align: center;'>{0}</th></tr></thead>"
                                             + "<tbody><tr><td><a id='{1}'></a></td></tr></tbody></table></div></div></div>";
 
-                                    $('#horizontalTab').easyResponsiveTabs({
-                                        type: 'default',    // Types: default, vertical, accordion
-                                        width: 'auto',      // Auto or any width like 600px
-                                        fit: true,          // 100% fit in a container
-                                        onload: function ($container, $control) {
-                                            var name = $control.attr('name'),
-                                                $c = $container.find('.entry');
-                                            if (!shown[name]) {
-                                                shown[name] = 1;
-                                                apiCall({
-                                                    api: 'Players',
-                                                    method: 'GetAllPlayersFromTeam',
-                                                    data: { team: name },
-                                                    success: function (data) {
-                                                        if (data.status != 200)
-                                                            return;
-                                                        var players= "",
-                                                            tippies = "";
-                                                        for (var i = 0; i < data.count; ++i) {
-                                                            var id = "tippy_tip" + data.data[i].Id + "_anchor",
-                                                                sponsor = "";
-                                                            if (data.data[i].SponsorType == "name")
-                                                                sponsor = "Sponsored by<br><strong>" + data.data[i].Sponsor + "</strong>";
-                                                            else if (data.data[i].SponsorType == "img")
-                                                                sponsor = "Sponsored by<br><img class='alignnone size-full' "
-                                                                        + "style='width: 187px; height: 84px;' alt='smshepherd' "
-                                                                        + "src='" + data.data[i].Sponsor + "' width='218' height='100'>";
-                                                            else if (data.data[i].SponsorType == "nothing")
-                                                                sponsor = "Sponsorship available<br><strong>" + data.data[i].Sponsor + "</strong>"
+                                    loadCommand = function ($container, $control) {
+                                        var name = $control.attr('name'),
+                                            $c = $container.find('.entry');
+                                        if (!shown[name]) {
+                                            shown[name] = 1;
+                                            apiCall({
+                                                api: 'Players',
+                                                method: 'GetAllPlayersFromTeam',
+                                                data: { team: name },
+                                                success: function (data) {
+                                                    if (data.status != 200)
+                                                        return;
+                                                    var players= "",
+                                                        tippies = "";
+                                                    for (var i = 0; i < data.count; ++i) {
+                                                        var id = "tippy_tip" + data.data[i].Id + "_anchor",
+                                                            sponsor = "";
 
-                                                            players += element_template.format(data.data[i].Name, id);
-                                                            tippies += tippy_template.format(
-                                                                data.data[i].Image,
-                                                                id,
-                                                                data.data[i].Name,
-                                                                data.data[i].PlayerId,
-                                                                data.data[i].Position,
-                                                                sponsor
-                                                            );
-                                                        }
+                                                        [ "PlayerId", "Position", "SponsorType" ].forEach(function (key) {
+                                                            if (!data.data[i][key])
+                                                                data.data[i][key] = "unknown"
+                                                        });
 
-                                                        $c.html(players);
-                                                        $tippies.html(tippies);
-                                                        makeTippy();
-                                                    },
-                                                });
-                                            }
-                                        },
-                                    });
+                                                        if (data.data[i].SponsorType == "name")
+                                                            sponsor = "Sponsored by<br><strong>" + data.data[i].Sponsor + "</strong>";
+                                                        else if (data.data[i].SponsorType == "img")
+                                                            sponsor = "Sponsored by<br><img class='alignnone size-full' "
+                                                                    + "style='width: 187px; height: 84px;' alt='smshepherd' "
+                                                                    + "src='" + data.data[i].Sponsor + "' width='218' height='100'>";
+                                                        else if (data.data[i].SponsorType == "nothing")
+                                                            sponsor = "Sponsorship available<br><strong>" + data.data[i].Sponsor + "</strong>"
+
+                                                        players += element_template.format(data.data[i].Name, id);
+                                                        tippies += tippy_template.format(
+                                                            data.data[i].Image,
+                                                            id,
+                                                            data.data[i].Name,
+                                                            data.data[i].PlayerId,
+                                                            data.data[i].Position,
+                                                            sponsor
+                                                        );
+                                                    }
+
+                                                    $c.html(players);
+                                                    $tippies.html(tippies);
+                                                    makeTippy();
+                                                },
+                                            });
+                                        }
+                                    }
                                 });
                             </script>
                         </div>
@@ -322,18 +334,7 @@ Email: info@crusadersrfl.com<br>
 Phone: 08432 896 407</p>
             </div>
 
-<div class="tippies-container">
-    <div class="tippy" data-width="230" data-height="160"
-            data-img="http://www.northwalescrusaders.co.uk/wp-content/uploads/2014/01/Ashall-2015-150x150.jpg"
-            data-anchor="#tippy_tip0_6291_anchor" >
-        <strong>Karl Ashall</strong><br />
-        Squad Number &#8211; 14<br />
-        Position &#8211; Hooker<br />
-        Sponsored by<br />
-        <img class="alignnone size-full wp-image-5582" style="width: 187px; height: 84px;"
-            alt="smshepherd" src="http://www.northwalescrusaders.co.uk/wp-content/uploads/2013/03/smshepherd.png" width="218" height="100" />
-    </div>
-</div>
+            <div class="tippies-container"></div>
 
             <!--footer-->
             <div class="footer" id="foot">

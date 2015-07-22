@@ -315,7 +315,7 @@
 					tipBox.draggable({ handle: '.tippy_header' });
 					tipHeader.addClass('tippy_draggable');
 				} else {
-					tipBox.draggable();
+					//tipBox.draggable();
 					tipBox.addClass('tippy_draggable');
 				}
 			}
