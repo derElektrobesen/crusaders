@@ -224,7 +224,6 @@ namespace NWC
 
 		private void Form1_Shown(object sender, EventArgs e)
 		{
-			/* TODO: UNCOMMENT ME
 			LoginForm frm = new LoginForm();
 			frm.ShowDialog(this);
 
@@ -232,7 +231,6 @@ namespace NWC
 				Close();
 			else if (frm.role() != "admin")
 				tabs.TabPages.Remove(tabAdmin);
-			 */
 
 			lstReferences.Items.Clear();
 			lstReferences.Items.AddRange(m_BookingReferences.ToArray());

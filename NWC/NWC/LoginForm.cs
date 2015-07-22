@@ -38,5 +38,10 @@ namespace NWC
 		{
 			return m_Role;
 		}
+
+		private void LoginForm_Load(object sender, EventArgs e)
+		{
+			edtLogin.Focus();
+		}
 	}
 }

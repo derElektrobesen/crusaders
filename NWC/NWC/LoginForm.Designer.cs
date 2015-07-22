@@ -39,7 +39,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(141, 86);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 0;
+			this.btnCancel.TabIndex = 3;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -49,7 +49,7 @@
 			this.btnOk.Location = new System.Drawing.Point(60, 86);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(75, 23);
-			this.btnOk.TabIndex = 1;
+			this.btnOk.TabIndex = 2;
 			this.btnOk.Text = "Ok";
 			this.btnOk.UseVisualStyleBackColor = true;
 			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -59,7 +59,7 @@
 			this.edtLogin.Location = new System.Drawing.Point(22, 12);
 			this.edtLogin.Name = "edtLogin";
 			this.edtLogin.Size = new System.Drawing.Size(194, 20);
-			this.edtLogin.TabIndex = 4;
+			this.edtLogin.TabIndex = 0;
 			this.edtLogin.Watermark = "Login";
 			// 
 			// edtPass
@@ -68,7 +68,7 @@
 			this.edtPass.Name = "edtPass";
 			this.edtPass.PasswordChar = '*';
 			this.edtPass.Size = new System.Drawing.Size(194, 20);
-			this.edtPass.TabIndex = 5;
+			this.edtPass.TabIndex = 1;
 			this.edtPass.Watermark = "Password";
 			// 
 			// LoginForm
@@ -85,6 +85,7 @@
 			this.Name = "LoginForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Authentification";
+			this.Load += new System.EventHandler(this.LoginForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
