@@ -38,35 +38,31 @@ Berezhnoy Pavel S14004732
             <div class="banner">
                 <div class="container">
                     <nav class="navbar navbar-default bg">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                          <div class="logo">
-                              <a href="index.html">North Wales<span> Crusaders</span></a>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse bod" id="bs-example-navbar-collapse-1"> 
-
-                        </div><!-- /.navbar-collapse -->
-                          <div class="clearfix"></div>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="logo">
+                        <a href="index.html">North Wales<span> Crusaders</span></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse bod" id="bs-example-navbar-collapse-1">
+                    </div><!-- /.navbar-collapse -->
+                    <div class="clearfix"></div>
                     </nav>
-                <!--start-smoth-scrolling-->
-                <script type="text/javascript" src="js/move-top.js"></script>
-                <script type="text/javascript" src="js/easing.js"></script>
-                <script type="text/javascript">
-                    jQuery(document).ready(function($) {
-                        $(".scroll").click(function(event){
-                            event.preventDefault();
-                            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-                        });
-                    });
-                </script>
-                <!--start-smoth-scrolling-->
-            <div class="clear"></div>
+                    <!--start-smoth-scrolling-->
+                    <script type="text/javascript" src="js/move-top.js"></script>
+                    <script type="text/javascript" src="js/easing.js"></script>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function($) {
+                                $(".scroll").click(function(event){
+                                    event.preventDefault();
+                                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);});
+                                });
+                    </script>
+                    <!--start-smoth-scrolling-->
+                    <div class="clear"></div>
             </div>
-         </div>
-       </div>
+        </div>
 
         <script type="text/javascript">
-            /*
             $(function () {
                 apiCall({
                     api: 'Matches',
@@ -74,164 +70,55 @@ Berezhnoy Pavel S14004732
                     success: function(data) {
                         if (data.status != 200)
                             return;
-                        var template =
-                            '<div class="product span3 adaptive-grid">' +
-                                '<div class="image"><a href="{0}"><img src="{1}" alt="Match Ticket v {2} {3}"></a></div>' +
-                                '<div class="details"><a href="{0}" class="clearfix"><h4 class="title">Match Ticket v {2} {3}</h4>' +
-                                    '<span class="vendor">North Wales Crusaders</span><span class="price"><small><em>From</em></small>£{4}.00</span>
-                                    </a>
-                                </div>
-                            </div>
+                        var action = "",
+                            template =
+                                '<div class="product span3 adaptive-grid">' +
+                                '<div class="image"><a onclick="{0}"><img src="{1}" alt="Match Ticket v {2} {3}"></a></div>' +
+                                '<div class="details"><a onclick="{0}" class="clearfix"><h4 class="title">Match Ticket v {2} {3}</h4>' +
+                                '<span class="vendor">North Wales Crusaders</span><span class="price"><small>' +
+                                '<em>From </em></small>£{4}.00</span></a></div></div>',
+                                content = "<h1>Matches</h1><br>";
+                        for (var i = 0; i < data.count; ++i) {
+                            var item = data.data[i];
+                            content += template.format(action, item.CompetitorImage, item.Competitor, item.DateTime.DateString, item.ChildPrice);
+                            if (i == 0)
+                                content += "<br>";
+                        }
 
+                        $("#matches-list").html(content);
                     },
                 });
             });
-            */
         </script>
 
         <div class="about-deer" id="about">
             <div class="container">
-                <div class="about-para" id="matches-list">
-                    <h1>Matches</h1>
-                    <div class="product span3 adaptive-grid">
-
-
-
-  <div class="image">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds">
-      <img src="http://cdn.shopify.com/s/files/1/0754/9799/products/online_ticket_picture_b5ba8225-b04c-43b7-b8eb-bc7dd0834d1d_large.jpg?v=1436786348" alt="Match Ticket v Gloucestershire All Golds Sunday 2nd August">
-    </a>
-  </div>
-
-  <div class="details">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds" class="clearfix">
-      <h4 class="title">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h4>
-      <span class="vendor">North Wales Crusaders</span>
-      <span class="price">
-        <small><em>From</em></small>
-               £5.00
-      </span>
-    </a>
-  </div>
-
-</div>
-<div class="product span3 adaptive-grid">
-
-  
-
-  <div class="image">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds">
-      <img src="http://cdn.shopify.com/s/files/1/0754/9799/products/online_ticket_picture_b5ba8225-b04c-43b7-b8eb-bc7dd0834d1d_large.jpg?v=1436786348" alt="Match Ticket v Gloucestershire All Golds Sunday 2nd August">
-    </a>
-  </div>
-
-  <div class="details">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds" class="clearfix">
-      <h4 class="title">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h4>
-      <span class="vendor">North Wales Crusaders</span>
-      <span class="price">           
-        <small><em>From</em></small>
-               £5.00
-      </span>
-    </a>
-  </div>
-
-</div><div class="product span3 adaptive-grid">
-
-  
-
-  <div class="image">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds">
-      <img src="http://cdn.shopify.com/s/files/1/0754/9799/products/online_ticket_picture_b5ba8225-b04c-43b7-b8eb-bc7dd0834d1d_large.jpg?v=1436786348" alt="Match Ticket v Gloucestershire All Golds Sunday 2nd August">
-    </a>
-  </div>
-
-  <div class="details">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds" class="clearfix">
-      <h4 class="title">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h4>
-      <span class="vendor">North Wales Crusaders</span>
-      <span class="price">           
-        <small><em>From</em></small>
-               £5.00
-      </span>
-    </a>
-  </div>
-
-</div><div class="product span3 adaptive-grid">
-
-  
-
-  <div class="image">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds">
-      <img src="http://cdn.shopify.com/s/files/1/0754/9799/products/online_ticket_picture_b5ba8225-b04c-43b7-b8eb-bc7dd0834d1d_large.jpg?v=1436786348" alt="Match Ticket v Gloucestershire All Golds Sunday 2nd August">
-    </a>
-  </div>
-
-  <div class="details">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds" class="clearfix">
-      <h4 class="title">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h4>
-      <span class="vendor">North Wales Crusaders</span>
-      <span class="price">           
-        <small><em>From</em></small>
-               £5.00
-      </span>
-    </a>
-  </div>
-
-</div><div class="product span3 adaptive-grid">
-
-  
-
-  <div class="image">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds">
-      <img src="http://cdn.shopify.com/s/files/1/0754/9799/products/online_ticket_picture_b5ba8225-b04c-43b7-b8eb-bc7dd0834d1d_large.jpg?v=1436786348" alt="Match Ticket v Gloucestershire All Golds Sunday 2nd August">
-    </a>
-  </div>
-
-  <div class="details">
-    <a href="http://north-wales-crusaders.myshopify.com/collections/tickets/products/match-ticket-v-gloucestershire-all-golds" class="clearfix">
-      <h4 class="title">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h4>
-      <span class="vendor">North Wales Crusaders</span>
-      <span class="price">           
-        <small><em>From</em></small>
-               £5.00
-      </span>
-    </a>
-  </div>
-
-</div>
-
-
-
-                </div>
+                <div class="about-para" id="matches-list"></div>
             </div>
         </div>
-               </div>
-    </div>
-</div>
 
-            <!--footer-->
-            <div class="footer" id="foot">
-                <div class="container">
-                    <div class="col-md-3 logo flt">
-                        <a href="#">North Wales <span>Crusaders</span></a>
-                    </div>
-                    <div class="col-md-6 cpyrt fltt">
-                        <p>Copyright 2015 - Olga Kosyura & Pavel Berezhnoy 
-                         </div>
-                    <div class="col-md-3 flt">
-                        <div class="social">
-                            <ul>
-                                <li><a href="https://www.facebook.com/NorthWalesCrusaders" class="face"></a></li>
-                                <li><a href="https://twitter.com/NWCrusadersRL" class="twit"></a></li>
-                                <li><a href="https://instagram.com/NWCrusaders/" class="in"></a></li>
-                                <li><a href="https://www.pinterest.com/NWCrusaders/" class="del"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
+        <!--footer-->
+        <div class="footer" id="foot">
+            <div class="container">
+                <div class="col-md-3 logo flt">
+                    <a href="#">North Wales <span>Crusaders</span></a>
                 </div>
+                <div class="col-md-6 cpyrt fltt">
+                    <p>Copyright 2015 - Olga Kosyura & Pavel Berezhnoy 
+                     </div>
+                <div class="col-md-3 flt">
+                    <div class="social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/NorthWalesCrusaders" class="face"></a></li>
+                            <li><a href="https://twitter.com/NWCrusadersRL" class="twit"></a></li>
+                            <li><a href="https://instagram.com/NWCrusaders/" class="in"></a></li>
+                            <li><a href="https://www.pinterest.com/NWCrusaders/" class="del"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
             </div>
-            <!--footer-->
+        </div>
+        <!--footer-->
    </body>
 </html>

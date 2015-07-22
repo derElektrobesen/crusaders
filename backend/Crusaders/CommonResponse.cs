@@ -25,8 +25,7 @@ namespace Crusaders
 
 		public override object Deserialize(IDictionary<string, object> dictionary, Type type, JavaScriptSerializer serializer)
 		{
-			DateTime dt = DateTime.ParseExact(dictionary
-			["DateString"].ToString(), "MM/dd/yyyy", null);
+			DateTime dt = DateTime.ParseExact(dictionary["DateString"].ToString(), "MM/dd/yyyy", null);
 
 			return dt;
 		}
@@ -36,7 +35,7 @@ namespace Crusaders
 			DateTime dt = Convert.ToDateTime(obj);
 
 			Dictionary<string, object> dicDateTime = new Dictionary<string, object>(1);
-			dicDateTime.Add("DateString", dt.ToString("MM/dd/yyyy"));
+			dicDateTime.Add("DateString", dt.ToString("dddd d MMMM"));
 
 			return dicDateTime;
 		}
