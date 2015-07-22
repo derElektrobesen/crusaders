@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
 			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.tblTicketInfo = new System.Windows.Forms.TableLayoutPanel();
 			this.lstReferences = new System.Windows.Forms.ListBox();
 			this.edtSearch = new WatermarkTextBox.WatermarkTextBox();
 			this.tabs = new System.Windows.Forms.TabControl();
@@ -39,22 +41,17 @@
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.bntAdd = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
-			this.panel1 = new System.Windows.Forms.Panel();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.tblTicketInfo = new System.Windows.Forms.TableLayoutPanel();
 			this.tabPage1.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.tabs.SuspendLayout();
 			this.tabAdmin.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tblData)).BeginInit();
-			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabPage1
 			// 
-			this.tabPage1.Controls.Add(this.pictureBox2);
 			this.tabPage1.Controls.Add(this.pictureBox1);
 			this.tabPage1.Controls.Add(this.panel1);
 			this.tabPage1.Controls.Add(this.lstReferences);
@@ -66,6 +63,31 @@
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Bookings";
 			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.tblTicketInfo);
+			this.panel1.Location = new System.Drawing.Point(392, 32);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(360, 394);
+			this.panel1.TabIndex = 4;
+			// 
+			// tblTicketInfo
+			// 
+			this.tblTicketInfo.ColumnCount = 2;
+			this.tblTicketInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tblTicketInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tblTicketInfo.Location = new System.Drawing.Point(3, -26);
+			this.tblTicketInfo.Name = "tblTicketInfo";
+			this.tblTicketInfo.RowCount = 6;
+			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tblTicketInfo.Size = new System.Drawing.Size(354, 417);
+			this.tblTicketInfo.TabIndex = 0;
 			// 
 			// lstReferences
 			// 
@@ -174,46 +196,14 @@
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.tblTicketInfo);
-			this.panel1.Location = new System.Drawing.Point(392, 32);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(360, 394);
-			this.panel1.TabIndex = 4;
-			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(758, 6);
+			this.pictureBox1.Image = global::NWC.Properties.Resources.North_Wales_Crusaders_logo;
+			this.pictureBox1.Location = new System.Drawing.Point(755, 97);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(198, 205);
+			this.pictureBox1.Size = new System.Drawing.Size(198, 226);
 			this.pictureBox1.TabIndex = 5;
 			this.pictureBox1.TabStop = false;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Location = new System.Drawing.Point(758, 217);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(198, 209);
-			this.pictureBox2.TabIndex = 6;
-			this.pictureBox2.TabStop = false;
-			// 
-			// tblTicketInfo
-			// 
-			this.tblTicketInfo.ColumnCount = 2;
-			this.tblTicketInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tblTicketInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tblTicketInfo.Location = new System.Drawing.Point(3, -26);
-			this.tblTicketInfo.Name = "tblTicketInfo";
-			this.tblTicketInfo.RowCount = 6;
-			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tblTicketInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tblTicketInfo.Size = new System.Drawing.Size(354, 417);
-			this.tblTicketInfo.TabIndex = 0;
 			// 
 			// Form1
 			// 
@@ -230,13 +220,12 @@
 			this.Shown += new System.EventHandler(this.Form1_Shown);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
+			this.panel1.ResumeLayout(false);
 			this.tabs.ResumeLayout(false);
 			this.tabAdmin.ResumeLayout(false);
 			this.tabAdmin.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tblData)).EndInit();
-			this.panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -254,7 +243,6 @@
 		private System.Windows.Forms.Button btnSave;
 		private WatermarkTextBox.WatermarkTextBox edtSearch;
 		private System.Windows.Forms.ListBox lstReferences;
-		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TableLayoutPanel tblTicketInfo;

@@ -19,11 +19,13 @@ Berezhnoy Pavel S14004732
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!--custom-css-->
         <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/jquery.tippy.css" rel="stylesheet" type="text/css">
         <!--fonts-->
         <link href="http://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
         <!--js-->
         <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.tippy.js"></script>
         <script src="js/responsiveslides.min.js"></script>
 
         <script src="js/functions.js"></script>
@@ -167,17 +169,28 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
         </div>
         <div class="deer-services" id="services">
             <div class="container">
-                <h3>Squad </h3>
+                <h3>Squad</h3>
+                <script type="text/javascript">
+                    jQuery(document).ready(function() {
+                            jQuery('.tippy').tippy({ position: "mouse", offsetx: 0,
+                                offsety: -150, closetext: "X", hidedelay: 700,
+                                showdelay: 100, calcpos: "parent", showspeed: 200,
+                                hidespeed: 200, showtitle: true, hoverpopup: true,
+                                draggable: true, dragheader: true, multitip: false,
+                                autoshow: false, showheader: true, showclose: true,
+                                htmlentities: false, autoclose: false });
+                            });
+                </script>
                 <div class="statistics">
-                    <div class="sap_tabs">	
+                    <div class="sap_tabs">
                          <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                               <ul class="resp-tabs-list">
                                    <li class="resp-tab-item fs" aria-controls="tab_item-0" role="tab" name="First Team">
                                    <span>First Team</span></li>
                                    <li class="resp-tab-item fs" aria-controls="tab_item-1" role="tab" name="Under 16’s Squad">
-                                   <span>Under 16’s Squad</span></li>
+                                   <span>Under 16’s</span></li>
                                    <li class="resp-tab-item fs" aria-controls="tab_item-2" role="tab" name="Wheelchair Squad">
-                                   <span>Wheelchair Squad</span></li>
+                                   <span>Wheelchair</span></li>
                                    <div class="clearfix"></div>
                                </ul>
                                <div class="resp-tabs-container">
@@ -185,20 +198,34 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                        <img src="images/a.jpg" alt="" class="img-responsive"/>
                                        <h4>First Team</h4>
                                        <P>First team squad for North Wales Crusaders Rugby League team who play in Wrexham.</P>
-                                       <!-- INSERT PLAYERS HERE -->
+
+                                       <div class="inner">
+                                           <div class="styled_table table_white shadow">
+                                               <table width="33%">
+                                                   <thead>
+                                                       <tr>
+                                                           <th style="text-align: center;">Karl<br />Ashall</th>
+                                                       </tr>
+                                                   </thead>
+                                                   <tbody>
+                                                       <tr>
+                                                           <td><a id="tippy_tip0_6291_anchor"></a></td>
+                                                       </tr>
+                                                   </tbody>
+                                               </table>
+                                           </div>
+                                       </div>
                                    </div>
-                                   <div class="tab-2 resp-tab-content msg" aria-labelledby="tab_item-1">
+                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
                                        <img src="images/b.png" alt="" class="img-responsive"/>
                                        <h4>Under 16’s Squad</h4>
                                        <a href="http://www.northwalescrusaders.co.uk/under-16s-squad/">Show</a>
-                                       <!-- INSERT PLAYERS HERE -->
                                    </div>
-                                   <div class="tab-3 resp-tab-content msg" aria-labelledby="tab_item-2">
+                                   <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-2">
                                        <img src="images/c.jpg" alt="" class="img-responsive"/>
                                        <h4>Wheelchair Squad</h4>
                                        <p>NWC Wheelchair Squad 2015</p>
                                        <a href="http://www.northwalescrusaders.co.uk/wheelchair-squad/">Show</a>
-                                       <!-- INSERT PLAYERS HERE -->
                                    </div>
                                </div>
                            </div>
@@ -211,7 +238,8 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                         width: 'auto',      // Auto or any width like 600px
                                         fit: true,          // 100% fit in a container
                                         onload: function ($container, $control) {
-                                            var name = $control.attr('name');
+                                            var name = $control.attr('name'),
+                                                $table = $container.find('table');
                                             if (!shown[name]) {
                                                 shown[name] = 1;
                                                 apiCall({
@@ -219,10 +247,9 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                                     method: 'GetAllPlayersFromTeam',
                                                     data: { team: name },
                                                     success: function (data) {
-                                                        console.log(data);
-                                                        // INSERT PLAYERS HERE
-                                                        // object can be found using $container object.
-                                                        // Fill this container here
+                                                        $table.html(
+
+                                                        );
                                                     },
                                                 });
                                             }
@@ -260,6 +287,20 @@ LL11 2AH<br>
 Email: info@crusadersrfl.com<br>
 Phone: 08432 896 407</p>
             </div>
+
+<div class="tippies-container">
+    <div class="tippy" data-width="230" data-height="160"
+            data-img="http://www.northwalescrusaders.co.uk/wp-content/uploads/2014/01/Ashall-2015-150x150.jpg"
+            data-anchor="#tippy_tip0_6291_anchor" >
+        <strong>Karl Ashall</strong><br />
+        Squad Number &#8211; 14<br />
+        Position &#8211; Hooker<br />
+        Sponsored by<br />
+        <img class="alignnone size-full wp-image-5582" style="width: 187px; height: 84px;"
+            alt="smshepherd" src="http://www.northwalescrusaders.co.uk/wp-content/uploads/2013/03/smshepherd.png" width="218" height="100" />
+    </div>
+</div>
+
             <!--footer-->
             <div class="footer" id="foot">
                 <div class="container">
