@@ -199,22 +199,7 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                        <h4>First Team</h4>
                                        <P>First team squad for North Wales Crusaders Rugby League team who play in Wrexham.</P>
 
-                                       <div class="inner">
-                                           <div class="styled_table table_white shadow">
-                                               <table width="33%">
-                                                   <thead>
-                                                       <tr>
-                                                           <th style="text-align: center;">Karl<br />Ashall</th>
-                                                       </tr>
-                                                   </thead>
-                                                   <tbody>
-                                                       <tr>
-                                                           <td><a id="tippy_tip0_6291_anchor"></a></td>
-                                                       </tr>
-                                                   </tbody>
-                                               </table>
-                                           </div>
-                                       </div>
+                                       <div class="entry"></div>
                                    </div>
                                    <div class="tab-1 resp-tab-content msg" aria-labelledby="tab_item-1">
                                        <img src="images/b.png" alt="" class="img-responsive"/>
@@ -232,14 +217,63 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                         <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
                             <script type="text/javascript">
                                 $(document).ready(function () {
-                                    var shown = {};
+
+
+                                        /*
+    <div class="tippy" data-width="230" data-height="160"
+            data-img="http://www.northwalescrusaders.co.uk/wp-content/uploads/2014/01/Ashall-2015-150x150.jpg"
+            data-anchor="#tippy_tip0_6291_anchor" >
+        <strong>Karl Ashall</strong><br />
+        Squad Number &#8211; 14<br />
+        Position &#8211; Hooker<br />
+        Sponsored by<br />
+        <img class="alignnone size-full wp-image-5582" style="width: 187px; height: 84px;"
+            alt="smshepherd" src="http://www.northwalescrusaders.co.uk/wp-content/uploads/2013/03/smshepherd.png" width="218" height="100" />
+    </div>
+
+
+
+
+                                       <div class="inner">
+                                           <div class="styled_table table_white shadow">
+                                               <table width="33%">
+                                                   <thead>
+                                                       <tr>
+                                                           <th style="text-align: center;">Karl<br />Ashall</th>
+                                                       </tr>
+                                                   </thead>
+                                                   <tbody>
+                                                       <tr>
+                                                           <td><a id="tippy_tip0_6291_anchor"></a></td>
+                                                       </tr>
+                                                   </tbody>
+                                               </table>
+                                           </div>
+                                       </div>
+
+    */
+
+
+                                    var shown = {},
+                                        $tippies = $(".tippies-container");
+                                        tippy_template =
+                                            "<div class='tippy' data-width='230' data-height='160' data-img='{0}' data-anchor='#{1}'>"
+                                            + "<strong>{2}</strong><br>"
+                                            + "Squard Number &#8211; {3}<br>"
+                                            + "Position &#8211; {4}<br>"
+                                            + "{5}<br>", // sponsored by || Sponsorship available
+                                        element_template =
+                                            "<div class='col col_1_3'><div class='inner'><div class='styled_table table_white shadow'>"
+                                            + "<table width='33%'><tr><th style='text-align: center;'>{0}<br>{1}</th>"
+                                            + "<tr><td><a id='{2}'></a><td></tr></table></div></div></div>";
+
                                     $('#horizontalTab').easyResponsiveTabs({
                                         type: 'default',    // Types: default, vertical, accordion
                                         width: 'auto',      // Auto or any width like 600px
                                         fit: true,          // 100% fit in a container
                                         onload: function ($container, $control) {
                                             var name = $control.attr('name'),
-                                                $table = $container.find('table');
+                                                $c = $container.find('.entry');
                                             if (!shown[name]) {
                                                 shown[name] = 1;
                                                 apiCall({
@@ -247,6 +281,8 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                                     method: 'GetAllPlayersFromTeam',
                                                     data: { team: name },
                                                     success: function (data) {
+                                                        if (data.status != 200)
+                                                            return;
                                                         $table.html(
 
                                                         );
