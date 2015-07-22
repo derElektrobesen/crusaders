@@ -178,7 +178,7 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                             hidespeed: 200, showtitle: true, hoverpopup: true,
                             draggable: true, dragheader: true, multitip: false,
                             autoshow: false, showheader: true, showclose: true,
-                            htmlentities: false, autoclose: false });
+                            htmlentities: false, autoclose: true});
                     }
                 </script>
                 <div class="statistics">
@@ -295,7 +295,7 @@ Financial problems at Pontypridd RFC led to the sale of their half of the Warrio
                                                     }
 
                                                     $c.html(players);
-                                                    $tippies.html(tippies);
+                                                    $tippies.html($tippies.html() + tippies);
                                                     makeTippy();
                                                 },
                                             });
