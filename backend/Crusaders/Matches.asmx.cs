@@ -58,6 +58,8 @@ namespace Crusaders
 		{
 			DataClassesDataContext db = new DataClassesDataContext();
 			IQueryable<matches> q = from match in db.matches where match.Id == id select match;
+			if (q == null || q.Count() == 0)
+				return new CommonResponse(new BadRequestError("Unknown match id")).json();
 			return new ListResponse<matches>(q.ToList()).json();
 		}
 
@@ -73,7 +75,17 @@ namespace Crusaders
 		public string BookTicket(int matchid, string tickettype, int quantity, string email)
 		{
 			DataClassesDataContext db = new DataClassesDataContext();
-			matches match = db.matches.First(i => i.Id == matchid);
+			matches match;
+
+			try
+			{
+				match = db.matches.First(i => i.Id == matchid);
+			}
+			catch (Exception e)
+			{
+				return new CommonResponse(new BadRequestError("Invalid match id")).json();
+			}
+
 			if (match == null)
 				return new CommonResponse(new BadRequestError("Invalid match id")).json();
 
@@ -148,7 +160,7 @@ namespace Crusaders
 				}
 				catch (Exception e)
 				{
-					return new CommonResponse(new BadRequestError("Can't send an email: " + e.ToString())).json();
+					return new CommonResponse(new SendMsgError()).json();
 				}
 			}
 

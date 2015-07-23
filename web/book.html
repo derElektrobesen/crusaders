@@ -6,209 +6,243 @@ Berezhnoy Pavel S14004732
 <!doctype html>
 <html>
     <head>
-	<title>North Wales Crusaders </title>
+        <title>North Wales Crusaders </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Play-Offs Responsive web template, Bootstrap Web Templates, Flat Web Templates,
-            Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia,
-            Samsung, LG, SonyErricsson, Motorola web design" />
+        Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia,
+        Samsung, LG, SonyErricsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
             function hideURLbar(){ window.scrollTo(0,1); }
-        </script>
-        <!--bootstrap-file-->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!--custom-css-->
-        <link href="css/style.css" rel="stylesheet" type="text/css">
+            </script>
+            <!--bootstrap-file-->
+            <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <!--custom-css-->
+            <link href="css/style.css" rel="stylesheet" type="text/css">
 
-        <!--fonts-->
-        <link href="http://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
-        <!--js-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/responsiveslides.min.js"></script>
-
-        <script src="js/functions.js"></script>
-	
-    </head>
-
-    <body>
-
-	<div class="header" id="home">
+            <!--fonts-->
+            <link href="http://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet" type="text/css">
+            <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
             <!--js-->
-            <script src="js/bootstrap.min.js"></script>
-            <!--js-->
-            <div class="banner">
-                <div class="container">
-                    <nav class="navbar navbar-default bg">
+            <script src="js/jquery.min.js"></script>
+            <script src="js/responsiveslides.min.js"></script>
+
+            <script src="js/functions.js"></script>
+
+        </head>
+
+        <body>
+
+            <div class="header" id="home">
+                <!--js-->
+                <script src="js/bootstrap.min.js"></script>
+                <!--js-->
+                <div class="banner">
+                    <div class="container">
+                        <nav class="navbar navbar-default bg">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                          <div class="logo">
-                              <a href="index.html">North Wales<span> Crusaders</span></a>
+                        <div class="logo">
+                            <a href="index.html">North Wales<span> Crusaders</span></a>
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse bod" id="bs-example-navbar-collapse-1"> 
 
                         </div><!-- /.navbar-collapse -->
-                          <div class="clearfix"></div>
-                    </nav>
-                <!--start-smoth-scrolling-->
-                <script type="text/javascript" src="js/move-top.js"></script>
-                <script type="text/javascript" src="js/easing.js"></script>
-                <script type="text/javascript">
-                    jQuery(document).ready(function($) {
-                        $(".scroll").click(function(event){
-                            event.preventDefault();
-                            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-                        });
-                    });
-                </script>
-                <!--start-smoth-scrolling-->
-            <div class="clear"></div>
+                        <div class="clearfix"></div>
+                        </nav>
+                        <!--start-smoth-scrolling-->
+                        <script type="text/javascript" src="js/move-top.js"></script>
+                        <script type="text/javascript" src="js/easing.js"></script>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function($) {
+                                    $(".scroll").click(function(event){
+                                        event.preventDefault();
+                                        $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                                        });
+                                    });
+</script>
+<!--start-smoth-scrolling-->
+<div class="clear"></div>
             </div>
-         </div>
-       </div>
+        </div>
+    </div>
 
-        <script type="text/javascript">
-            /*
-            $(function () {
-                apiCall({
-                    api: 'Matches',
-                    method: 'ListMatches',
-                    success: function(data) {
-                        if (data.status != 200)
-                            return;
-                        var template =
-                            '<div class="product span3 adaptive-grid">' +
-                                '<div class="image"><a href="{0}"><img src="{1}" alt="Match Ticket v {2} {3}"></a></div>' +
-                                '<div class="details"><a href="{0}" class="clearfix"><h4 class="title">Match Ticket v {2} {3}</h4>' +
-                                    '<span class="vendor">North Wales Crusaders</span><span class="price"><small><em>From</em></small>£{4}.00</span>
-                                    </a>
-                                </div>
-                            </div>
+    <script type="text/javascript">
+        var matchinfo;
 
-                    },
-                });
+        $(function () {
+            var params = getQueryParams(window.location.search);
+            if (!params || params.id == undefined) {
+                window.location.pathname = "/";
+                return;
+            }
+            apiCall({
+               api: 'Matches',
+               method: 'MatchInfo',
+               data: { id: params.id },
+               success: function(data) {
+                    if (data.status != 200 || data.count != 1) {
+                        alert("Error: " + data.error);
+                        return;
+                    }
+
+                    match_info = data.data[0];
+
+                    $("#match-name").text("Match Ticket v {0}, {1}".format(match_info.Competitor, match_info.DateTime.DateString));
+                    $("#match-img").attr('src', match_info.CompetitorImage);
+
+                    changePrice();
+               },
             });
-            */
-        </script>
+        });
 
-        <div class="about-deer" id="about">
-            <div class="container">
-                <div class="about-para" id="matches-list">
-                    <h1>Booking</h1>
-<h1 class="title" itemprop="name" style="margin-bottom:20px">Match Ticket v Gloucestershire All Golds Sunday 2nd August</h1>
-		
-		<table border="0" align="center">
-						<tr>
-						
+        function buyTicket() {
+            if (!match_info) {
+                window.location.pathname = "/";
+                return;
+            }
 
-						<td rowspan="4" align="left"><img width="50%" src="http://cdn.shopify.com/s/files/1/0754/9799/products/online_ticket_picture_b5ba8225-b04c-43b7-b8eb-bc7dd0834d1d_large.jpg?v=1436786348"></td>
-							
-							
-							<td align="right">
-							
-							
-							<div class="span6">
+            var count = $("#quantity").val(),
+                type = $("#ticket-type").val(),
+                email = $("#email").val();
 
-      
-      <div class="purchase" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-        
+            if (email.trim() == "") {
+                alert("Email is required!");
+                return false;
+            }
 
-        
-        <h2 class="price" id="price-preview">£14.00</h2>
-      </div>
+            apiCall({
+                api: "Matches",
+                method: "BookTicket",
+                data: {
+                    matchid: match_info.Id,
+                    tickettype: type,
+                    quantity: count,
+                    email: email,
+                },
+                success: function (data) {
+                    if (data.status == 407) {
+                        alert("Can't send message on given email address");
+                        return;
+                    }
+                    if (data.status != 200) {
+                        alert("Error: " + data.error);
+                        return;
+                    }
 
-      
-      
-</td>						
-							</tr>
-						<tr>
-<td align="right">
-      <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+                    alert("Booking complete! Booking reference sent on your email address: " + data.data[0].BookingReference);
+                    window.location.pathname = "/";
+                },
+            });
 
-        <!-- Begin product options -->
-        <div class="product-options">
+            return false;
+        }
 
-          <div class="select clearfix">
-            <div class="selector-wrapper"><label style="margin-right:5px">Ticket Type</label><select class="single-option-selector" data-option="option1" id="product-select-option-0"><option value="Adult">Adult</option><option value="Concession">Concession</option><option value="Child">Child</option></select></div><select id="product-select" name="id" style="display: none;">
-              
-              <option selected="selected" value="3543832708">Adult - £14.00</option>
-              
-              <option value="3543833668">Concession - £9.00</option>
-              
-              <option value="3543835716">Child - £5.00</option>
-              
-            </select>
-          </div>
+        function changePrice() {
+            var count = $("#quantity").val(),
+                type = $("#ticket-type").val();
+            if (!match_info || match_info[type + "Price"] == undefined) {
+                window.location.pathname = "/";
+                return;
+            }
 
-</td>    						
-							</tr>
-						<tr>
-     <td align="right"> 
-          <div class="selector-wrapper">
-            <label style="margin-right:5px">Quantity </label>
-            <input id="quantity" type="number" name="quantity" value="1" min="1" class="tc item-quantity">
-          </div>
-          
+            $("#price-preview").text((parseFloat(count) * parseFloat(match_info[type + "Price"])).toString() + ".00");
+        }
+    </script>
 
-          
+    <div class="about-deer" id="about">
+        <div class="container">
+            <div class="about-para" id="matches-list">
+                <h1>Booking</h1>
+                <h1 class="title" itemprop="name" style="margin-bottom:20px" id='match-name'></h1>
 
-        </div>
-</td>
-						
-							</tr>
-						<tr>
-<td align="right">
-  <div class="email">
-            <label style="margin-right:5px">Email </label>
-            <input id="quantity" type="text" name="email" value="example@gmail.com">
-          </div>
-          
+                <table border="0" align="center">
+                    <tr>
+                        <td rowspan="4" align="left"><img width="50%" src="" id='match-img'></td>
+                        <td align="right">
+                            <div class="span6">
+                                <div class="purchase" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                    <h2 class="price">£<span id="price-preview">0.00</span></h2>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <form id="add-item-form" onsubmit="return buyTicket()" method="post" class="variants clearfix">
+                                    <!-- Begin product options -->
+                                    <div class="product-options">
 
-          <div class="purchase-section multiple">
-            <div class="purchase">
-              <input type="submit" id="add-to-cart" class="btn" name="add" value="Add to cart" style="margin-top:20px">
+                                        <div class="select clearfix">
+                                            <div class="selector-wrapper">
+                                                <label style="margin-right:5px">Ticket Type</label>
+                                                <select class="single-option-selector" data-option="option1" id="ticket-type"
+                                                    id="product-select-option-0" onchange="changePrice()">
+                                                    <option value="Adult">Adult</option>
+                                                    <option value="Consession">Concession</option>
+                                                    <option value="Child">Child</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right"> 
+                                        <div class="selector-wrapper">
+                                            <label style="margin-right:5px">Quantity </label>
+                                            <input id="quantity" type="number" onchange="changePrice()" name="quantity" value="1" min="1" class="tc item-quantity">
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <div class="email">
+                                        <label style="margin-right:5px">Email </label>
+                                        <input id="email" type="text" name="email" value="">
+                                    </div>
+
+
+                                    <div class="purchase-section multiple">
+                                        <div class="purchase">
+                                            <input type="submit" id="add-to-cart" class="btn" name="add" value="Add to cart" style="margin-top:20px">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- End product options -->
+
+                            </form>
+
+                        </td>
+                    </tr>
+                </table>
             </div>
-          </div>
-
         </div>
-	   <!-- End product options -->
+    </div>
 
-      </form>
-
-						
-							</td>
-						</tr>
-						</table>
-
-
+    <!--footer-->
+    <div class="footer" id="foot">
+        <div class="container">
+            <div class="col-md-3 logo flt">
+                <a href="#">North Wales <span>Crusaders</span></a>
+            </div>
+            <div class="col-md-6 cpyrt fltt">
+                <p>Copyright 2015 - Olga Kosyura & Pavel Berezhnoy 
+            </div>
+            <div class="col-md-3 flt">
+                <div class="social">
+                    <ul>
+                        <li><a href="https://www.facebook.com/NorthWalesCrusaders" class="face"></a></li>
+                        <li><a href="https://twitter.com/NWCrusadersRL" class="twit"></a></li>
+                        <li><a href="https://instagram.com/NWCrusaders/" class="in"></a></li>
+                        <li><a href="https://www.pinterest.com/NWCrusaders/" class="del"></a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="clear"></div>
         </div>
-              
-
-
-            <!--footer-->
-            <div class="footer" id="foot">
-                <div class="container">
-                    <div class="col-md-3 logo flt">
-                        <a href="#">North Wales <span>Crusaders</span></a>
-                    </div>
-                    <div class="col-md-6 cpyrt fltt">
-                        <p>Copyright 2015 - Olga Kosyura & Pavel Berezhnoy 
-                         </div>
-                    <div class="col-md-3 flt">
-                        <div class="social">
-                            <ul>
-                                <li><a href="https://www.facebook.com/NorthWalesCrusaders" class="face"></a></li>
-                                <li><a href="https://twitter.com/NWCrusadersRL" class="twit"></a></li>
-                                <li><a href="https://instagram.com/NWCrusaders/" class="in"></a></li>
-                                <li><a href="https://www.pinterest.com/NWCrusaders/" class="del"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <!--footer-->
-   </body>
+    </div>
+    <!--footer-->
+</body>
 </html>

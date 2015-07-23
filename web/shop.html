@@ -70,17 +70,18 @@ Berezhnoy Pavel S14004732
                     success: function(data) {
                         if (data.status != 200)
                             return;
-                        var action = "",
+                        var action = "book.html?id=",
                             template =
                                 '<div class="product span3 adaptive-grid">' +
-                                '<div class="image"><a onclick="{0}"><img src="{1}" alt="Match Ticket v {2} {3}"></a></div>' +
-                                '<div class="details"><a onclick="{0}" class="clearfix"><h4 class="title">Match Ticket v {2} {3}</h4>' +
+                                '<div class="image"><a href="{0}"><img src="{1}" alt="Match Ticket v {2}, {3}"></a></div>' +
+                                '<div class="details"><a href="{0}" class="clearfix"><h4 class="title">Match Ticket v {2}, {3}</h4>' +
                                 '<span class="vendor">North Wales Crusaders</span><span class="price"><small>' +
                                 '<em>From </em></small>£{4}.00</span></a></div></div>',
                                 content = "<h1>Matches</h1><br>";
                         for (var i = 0; i < data.count; ++i) {
                             var item = data.data[i];
-                            content += template.format(action, item.CompetitorImage, item.Competitor, item.DateTime.DateString, item.ChildPrice);
+                            content += template.format(action + item.Id, item.CompetitorImage, item.Competitor,
+                                item.DateTime.DateString, item.ChildPrice);
                             if (i == 0)
                                 content += "<br>";
                         }

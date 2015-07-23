@@ -75,6 +75,12 @@ namespace Crusaders
         protected override string ErrStr() { return "Success"; }
     }
 
+	public class SendMsgError : CommonError
+	{
+		protected override int ErrCode() { return 407; }
+		protected override string ErrStr() { return "Can't send email message"; }
+	}
+
     public class SomeError : CommonError
     {
         private string _error;
