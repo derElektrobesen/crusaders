@@ -13,7 +13,9 @@ namespace Crusaders
 	[ScriptService]
 	public class Users : System.Web.Services.WebService
 	{
-		[WebMethod]
+		public const string remoteappkey = "8rAc1weajVfmpM07SpQAzmb/Jr3fJ1Lu9glo5OCGWN0=";
+
+		[WebMethod(Description = "Check authorization")]
 		public string Check(string login, string pass)
 		{
 			DataClassesDataContext db = new DataClassesDataContext();
@@ -24,19 +26,22 @@ namespace Crusaders
 				return q.ToList()[0].role;
 		}
 
-		[WebMethod]
-		public void UpdateUsers(List<users> users)
+		[WebMethod(Description = "Update users table (internal api)")]
+		public void UpdateUsers(string key, List<users> users)
 		{
-			DataClassesDataContext db = new DataClassesDataContext();
-			db.users.DeleteAllOnSubmit(db.users);
-			db.users.InsertAllOnSubmit(users);
-			db.SubmitChanges();
+			if (key == remoteappkey)
+			{
+				DataClassesDataContext db = new DataClassesDataContext();
+				db.users.DeleteAllOnSubmit(db.users);
+				db.users.InsertAllOnSubmit(users);
+				db.SubmitChanges();
+			}
 		}
 
-		[WebMethod]
+		[WebMethod(Description = "List all users")]
 		public List<users> ListUsers(string key)
 		{
-			if (key != "8rAc1weajVfmpM07SpQAzmb/Jr3fJ1Lu9glo5OCGWN0=")
+			if (key != remoteappkey)
 				return new List<users>();
 
 			DataClassesDataContext db = new DataClassesDataContext();

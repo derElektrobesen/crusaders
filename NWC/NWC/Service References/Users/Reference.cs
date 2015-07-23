@@ -105,7 +105,7 @@ namespace NWC.Users {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Check", ReplyAction="*")]
         NWC.Users.CheckResponse Check(NWC.Users.CheckRequest request);
         
-        // CODEGEN: Контракт генерации сообщений с именем users из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        // CODEGEN: Контракт генерации сообщений с именем key из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateUsers", ReplyAction="*")]
         NWC.Users.UpdateUsersResponse UpdateUsers(NWC.Users.UpdateUsersRequest request);
         
@@ -210,12 +210,16 @@ namespace NWC.Users {
     public partial class UpdateUsersRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string key;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public NWC.Users.ArrayOfUsers users;
         
         public UpdateUsersRequestBody() {
         }
         
-        public UpdateUsersRequestBody(NWC.Users.ArrayOfUsers users) {
+        public UpdateUsersRequestBody(string key, NWC.Users.ArrayOfUsers users) {
+            this.key = key;
             this.users = users;
         }
     }
@@ -361,9 +365,10 @@ namespace NWC.Users {
             return base.Channel.UpdateUsers(request);
         }
         
-        public void UpdateUsers(NWC.Users.ArrayOfUsers users) {
+        public void UpdateUsers(string key, NWC.Users.ArrayOfUsers users) {
             NWC.Users.UpdateUsersRequest inValue = new NWC.Users.UpdateUsersRequest();
             inValue.Body = new NWC.Users.UpdateUsersRequestBody();
+            inValue.Body.key = key;
             inValue.Body.users = users;
             NWC.Users.UpdateUsersResponse retVal = ((NWC.Users.UsersSoap)(this)).UpdateUsers(inValue);
         }

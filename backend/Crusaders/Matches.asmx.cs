@@ -158,7 +158,7 @@ namespace Crusaders
 				catch (NoException)
 				{
 				}
-				catch (Exception e)
+				catch (Exception)
 				{
 					return new CommonResponse(new SendMsgError()).json();
 				}
@@ -170,18 +170,24 @@ namespace Crusaders
 			return new ListResponse<tickets>(ticket).json();
 		}
 
-		[WebMethod(Description = "Update list of matches")]
-		public void UpdateMatches(List<matches> list)
+		[WebMethod(Description = "Update list of matches (internal api)")]
+		public void UpdateMatches(string appkey, List<matches> list)
 		{
-			DataClassesDataContext db = new DataClassesDataContext();
-			db.matches.DeleteAllOnSubmit(db.matches);
-			db.matches.InsertAllOnSubmit(list);
-			db.SubmitChanges();
+			if (appkey == Users.remoteappkey)
+			{
+				DataClassesDataContext db = new DataClassesDataContext();
+				db.matches.DeleteAllOnSubmit(db.matches);
+				db.matches.InsertAllOnSubmit(list);
+				db.SubmitChanges();
+			}
 		}
 
-		[WebMethod(Description = "Request list of bookings")]
-		public List<SingleTicket> GetAllBookings()
+		[WebMethod(Description = "Request list of bookings (internal api)")]
+		public List<SingleTicket> GetAllBookings(string appkey)
 		{
+			if (appkey != Users.remoteappkey)
+				return new List<SingleTicket>();
+
 			DataClassesDataContext db = new DataClassesDataContext();
 			IQueryable<SingleTicket> q = from ticket in db.tickets
 									join match in db.matches on ticket.MatchId equals match.Id

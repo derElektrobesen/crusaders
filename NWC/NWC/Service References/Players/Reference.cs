@@ -187,7 +187,7 @@ namespace NWC.Players {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllPlayers_internal", ReplyAction="*")]
         NWC.Players.GetAllPlayers_internalResponse GetAllPlayers_internal(NWC.Players.GetAllPlayers_internalRequest request);
         
-        // CODEGEN: Контракт генерации сообщений с именем players из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        // CODEGEN: Контракт генерации сообщений с именем appkey из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateAllPlayers_internal", ReplyAction="*")]
         NWC.Players.UpdateAllPlayers_internalResponse UpdateAllPlayers_internal(NWC.Players.UpdateAllPlayers_internalRequest request);
         
@@ -346,12 +346,16 @@ namespace NWC.Players {
     public partial class UpdateAllPlayers_internalRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string appkey;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public NWC.Players.ArrayOfPlayers players;
         
         public UpdateAllPlayers_internalRequestBody() {
         }
         
-        public UpdateAllPlayers_internalRequestBody(NWC.Players.ArrayOfPlayers players) {
+        public UpdateAllPlayers_internalRequestBody(string appkey, NWC.Players.ArrayOfPlayers players) {
+            this.appkey = appkey;
             this.players = players;
         }
     }
@@ -575,9 +579,10 @@ namespace NWC.Players {
             return base.Channel.UpdateAllPlayers_internal(request);
         }
         
-        public void UpdateAllPlayers_internal(NWC.Players.ArrayOfPlayers players) {
+        public void UpdateAllPlayers_internal(string appkey, NWC.Players.ArrayOfPlayers players) {
             NWC.Players.UpdateAllPlayers_internalRequest inValue = new NWC.Players.UpdateAllPlayers_internalRequest();
             inValue.Body = new NWC.Players.UpdateAllPlayers_internalRequestBody();
+            inValue.Body.appkey = appkey;
             inValue.Body.players = players;
             NWC.Players.UpdateAllPlayers_internalResponse retVal = ((NWC.Players.PlayersSoap)(this)).UpdateAllPlayers_internal(inValue);
         }

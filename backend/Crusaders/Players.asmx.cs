@@ -30,12 +30,15 @@ namespace Crusaders
 		}
 
 		[WebMethod(Description = "Update players in db (internal api)")]
-		public void UpdateAllPlayers_internal(List<players> players)
+		public void UpdateAllPlayers_internal(string appkey, List<players> players)
 		{
-			DataClassesDataContext db = new DataClassesDataContext();
-			db.players.DeleteAllOnSubmit(db.players);
-			db.players.InsertAllOnSubmit(players);
-			db.SubmitChanges();
+			if (appkey == Users.remoteappkey)
+			{
+				DataClassesDataContext db = new DataClassesDataContext();
+				db.players.DeleteAllOnSubmit(db.players);
+				db.players.InsertAllOnSubmit(players);
+				db.SubmitChanges();
+			}
 		}
 
 		[WebMethod(Description = "Request players in specified team")]

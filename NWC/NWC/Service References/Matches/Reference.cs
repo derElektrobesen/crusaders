@@ -314,15 +314,19 @@ namespace NWC.Matches {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListMatches", ReplyAction="*")]
         NWC.Matches.ListMatchesResponse ListMatches(NWC.Matches.ListMatchesRequest request);
         
+        // CODEGEN: Контракт генерации сообщений с именем MatchInfoResult из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MatchInfo", ReplyAction="*")]
+        NWC.Matches.MatchInfoResponse MatchInfo(NWC.Matches.MatchInfoRequest request);
+        
         // CODEGEN: Контракт генерации сообщений с именем tickettype из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/BookTicket", ReplyAction="*")]
         NWC.Matches.BookTicketResponse BookTicket(NWC.Matches.BookTicketRequest request);
         
-        // CODEGEN: Контракт генерации сообщений с именем list из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        // CODEGEN: Контракт генерации сообщений с именем appkey из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdateMatches", ReplyAction="*")]
         NWC.Matches.UpdateMatchesResponse UpdateMatches(NWC.Matches.UpdateMatchesRequest request);
         
-        // CODEGEN: Контракт генерации сообщений с именем GetAllBookingsResult из пространства имен http://tempuri.org/ не отмечен как обнуляемый
+        // CODEGEN: Контракт генерации сообщений с именем appkey из пространства имен http://tempuri.org/ не отмечен как обнуляемый
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBookings", ReplyAction="*")]
         NWC.Matches.GetAllBookingsResponse GetAllBookings(NWC.Matches.GetAllBookingsRequest request);
     }
@@ -453,6 +457,74 @@ namespace NWC.Matches {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class MatchInfoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="MatchInfo", Namespace="http://tempuri.org/", Order=0)]
+        public NWC.Matches.MatchInfoRequestBody Body;
+        
+        public MatchInfoRequest() {
+        }
+        
+        public MatchInfoRequest(NWC.Matches.MatchInfoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class MatchInfoRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int id;
+        
+        public MatchInfoRequestBody() {
+        }
+        
+        public MatchInfoRequestBody(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class MatchInfoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="MatchInfoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NWC.Matches.MatchInfoResponseBody Body;
+        
+        public MatchInfoResponse() {
+        }
+        
+        public MatchInfoResponse(NWC.Matches.MatchInfoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class MatchInfoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string MatchInfoResult;
+        
+        public MatchInfoResponseBody() {
+        }
+        
+        public MatchInfoResponseBody(string MatchInfoResult) {
+            this.MatchInfoResult = MatchInfoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class BookTicketRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="BookTicket", Namespace="http://tempuri.org/", Order=0)]
@@ -553,12 +625,16 @@ namespace NWC.Matches {
     public partial class UpdateMatchesRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string appkey;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public NWC.Matches.ArrayOfMatches list;
         
         public UpdateMatchesRequestBody() {
         }
         
-        public UpdateMatchesRequestBody(NWC.Matches.ArrayOfMatches list) {
+        public UpdateMatchesRequestBody(string appkey, NWC.Matches.ArrayOfMatches list) {
+            this.appkey = appkey;
             this.list = list;
         }
     }
@@ -610,10 +686,17 @@ namespace NWC.Matches {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class GetAllBookingsRequestBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string appkey;
+        
         public GetAllBookingsRequestBody() {
+        }
+        
+        public GetAllBookingsRequestBody(string appkey) {
+            this.appkey = appkey;
         }
     }
     
@@ -703,6 +786,19 @@ namespace NWC.Matches {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NWC.Matches.MatchInfoResponse NWC.Matches.MatchesSoap.MatchInfo(NWC.Matches.MatchInfoRequest request) {
+            return base.Channel.MatchInfo(request);
+        }
+        
+        public string MatchInfo(int id) {
+            NWC.Matches.MatchInfoRequest inValue = new NWC.Matches.MatchInfoRequest();
+            inValue.Body = new NWC.Matches.MatchInfoRequestBody();
+            inValue.Body.id = id;
+            NWC.Matches.MatchInfoResponse retVal = ((NWC.Matches.MatchesSoap)(this)).MatchInfo(inValue);
+            return retVal.Body.MatchInfoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         NWC.Matches.BookTicketResponse NWC.Matches.MatchesSoap.BookTicket(NWC.Matches.BookTicketRequest request) {
             return base.Channel.BookTicket(request);
         }
@@ -723,9 +819,10 @@ namespace NWC.Matches {
             return base.Channel.UpdateMatches(request);
         }
         
-        public void UpdateMatches(NWC.Matches.ArrayOfMatches list) {
+        public void UpdateMatches(string appkey, NWC.Matches.ArrayOfMatches list) {
             NWC.Matches.UpdateMatchesRequest inValue = new NWC.Matches.UpdateMatchesRequest();
             inValue.Body = new NWC.Matches.UpdateMatchesRequestBody();
+            inValue.Body.appkey = appkey;
             inValue.Body.list = list;
             NWC.Matches.UpdateMatchesResponse retVal = ((NWC.Matches.MatchesSoap)(this)).UpdateMatches(inValue);
         }
@@ -735,9 +832,10 @@ namespace NWC.Matches {
             return base.Channel.GetAllBookings(request);
         }
         
-        public NWC.Matches.SingleTicket[] GetAllBookings() {
+        public NWC.Matches.SingleTicket[] GetAllBookings(string appkey) {
             NWC.Matches.GetAllBookingsRequest inValue = new NWC.Matches.GetAllBookingsRequest();
             inValue.Body = new NWC.Matches.GetAllBookingsRequestBody();
+            inValue.Body.appkey = appkey;
             NWC.Matches.GetAllBookingsResponse retVal = ((NWC.Matches.MatchesSoap)(this)).GetAllBookings(inValue);
             return retVal.Body.GetAllBookingsResult;
         }

@@ -20,6 +20,7 @@
       <s:element name="UpdateUsers">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="users" type="tns:ArrayOfUsers" />
           </s:sequence>
         </s:complexType>
@@ -75,14 +76,17 @@
   </wsdl:message>
   <wsdl:portType name="UsersSoap">
     <wsdl:operation name="Check">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check authorization</wsdl:documentation>
       <wsdl:input message="tns:CheckSoapIn" />
       <wsdl:output message="tns:CheckSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateUsers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update users table (internal api)</wsdl:documentation>
       <wsdl:input message="tns:UpdateUsersSoapIn" />
       <wsdl:output message="tns:UpdateUsersSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ListUsers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List all users</wsdl:documentation>
       <wsdl:input message="tns:ListUsersSoapIn" />
       <wsdl:output message="tns:ListUsersSoapOut" />
     </wsdl:operation>

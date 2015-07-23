@@ -38,6 +38,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="MatchInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MatchInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MatchInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="BookTicket">
         <s:complexType>
           <s:sequence>
@@ -58,6 +72,7 @@
       <s:element name="UpdateMatches">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appkey" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="list" type="tns:ArrayOfMatches" />
           </s:sequence>
         </s:complexType>
@@ -66,7 +81,11 @@
         <s:complexType />
       </s:element>
       <s:element name="GetAllBookings">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appkey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="GetAllBookingsResponse">
         <s:complexType>
@@ -113,6 +132,12 @@
   <wsdl:message name="ListMatchesSoapOut">
     <wsdl:part name="parameters" element="tns:ListMatchesResponse" />
   </wsdl:message>
+  <wsdl:message name="MatchInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:MatchInfo" />
+  </wsdl:message>
+  <wsdl:message name="MatchInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:MatchInfoResponse" />
+  </wsdl:message>
   <wsdl:message name="BookTicketSoapIn">
     <wsdl:part name="parameters" element="tns:BookTicket" />
   </wsdl:message>
@@ -142,18 +167,23 @@
       <wsdl:input message="tns:ListMatchesSoapIn" />
       <wsdl:output message="tns:ListMatchesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="MatchInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request specific match info</wsdl:documentation>
+      <wsdl:input message="tns:MatchInfoSoapIn" />
+      <wsdl:output message="tns:MatchInfoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="BookTicket">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Make a booking</wsdl:documentation>
       <wsdl:input message="tns:BookTicketSoapIn" />
       <wsdl:output message="tns:BookTicketSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateMatches">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update list of matches</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update list of matches (internal api)</wsdl:documentation>
       <wsdl:input message="tns:UpdateMatchesSoapIn" />
       <wsdl:output message="tns:UpdateMatchesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllBookings">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request list of bookings</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Request list of bookings (internal api)</wsdl:documentation>
       <wsdl:input message="tns:GetAllBookingsSoapIn" />
       <wsdl:output message="tns:GetAllBookingsSoapOut" />
     </wsdl:operation>
@@ -171,6 +201,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListMatches">
       <soap:operation soapAction="http://tempuri.org/ListMatches" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatchInfo">
+      <soap:operation soapAction="http://tempuri.org/MatchInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -219,6 +258,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListMatches">
       <soap12:operation soapAction="http://tempuri.org/ListMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatchInfo">
+      <soap12:operation soapAction="http://tempuri.org/MatchInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
